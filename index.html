@@ -116,7 +116,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 @keyframes di{from{opacity:0;transform:translateY(-10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes bd{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(6px)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@media(max-width:768px){.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
+.img-full{width:100%;border-radius:var(--rl);border:1px solid rgba(255,255,255,.08);margin:24px 0;opacity:.92}
+.img-mascot{max-width:100px;border-radius:var(--r);opacity:.9;vertical-align:middle;margin-right:12px}
+.img-icon{max-width:120px;border-radius:var(--r);opacity:.88;float:right;margin:0 0 16px 16px;border:1px solid rgba(255,255,255,.06)}
+.img-logo{display:block;max-width:180px;margin:0 auto 24px;opacity:.95}
+.hero-bg-accent{position:absolute;top:0;right:0;width:40%;max-width:400px;height:100%;object-fit:cover;opacity:.08;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent)}
+@media(max-width:768px){.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
 
 /* PLATFORM SECTION */
 .po{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
@@ -173,12 +178,39 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .evo-badge.s3{color:var(--gg);border-color:rgba(224,90,120,.3);background:rgba(224,90,120,.08)}
 .evo-badge.s4{color:var(--sp);border-color:rgba(155,126,216,.3);background:rgba(155,126,216,.08)}
 .evo-text{font-family:'Instrument Serif',serif;font-size:1.05rem;color:var(--tw);line-height:1.55;min-height:24px;animation:fu .4s ease}
+
+/* TRADEMARK CONCEPTS */
+.tmk{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.tmk-card{padding:32px;background:var(--bg-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--rl);position:relative;overflow:hidden;transition:border-color .3s}
+.tmk-card:hover{border-color:rgba(155,126,216,.2)}
+.tmk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:20px 20px 0 0}
+.tmk-card.mvs::before{background:linear-gradient(90deg,var(--d),var(--i))}
+.tmk-card.ail::before{background:linear-gradient(90deg,var(--sp),var(--dbg))}
+.tmk-tm{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--td);margin-bottom:12px}
+.tmk-name{font-family:'Instrument Serif',serif;font-size:1.6rem;font-weight:400;color:var(--tw);margin-bottom:6px}
+.tmk-name sup{font-size:10px;color:var(--td);vertical-align:super;margin-left:2px}
+.tmk-tag{font-family:'Instrument Serif',serif;font-style:italic;font-size:1rem;margin-bottom:16px}
+.tmk-card.mvs .tmk-tag{color:var(--ig)}
+.tmk-card.ail .tmk-tag{color:var(--sp)}
+.tmk-desc{font-size:14px;color:var(--t);line-height:1.7}
+.hero-logo{position:relative;display:inline-block;margin-bottom:32px;animation:heroLogoIn 1.2s ease forwards;opacity:0;transition:opacity 0.6s ease}
+.hero-logo.faded{opacity:0.15}
+.hero-logo-img{max-width:400px;width:85vw;display:block;position:relative;z-index:1;animation:logoFloat 5s ease-in-out infinite}
+.hero-logo-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200%;height:200%;background:radial-gradient(ellipse,rgba(155,126,216,0.1) 0%,transparent 60%);z-index:0;animation:glowPulse 4s ease-in-out infinite;pointer-events:none}
+@keyframes heroLogoIn{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes glowPulse{0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+@media(max-width:768px){.tmk{grid-template-columns:1fr;gap:16px}.tmk-card{padding:24px}}
 </style>
 </head>
 <body>
-<nav class="nd" id="navDots"><button class="ndb active" data-section="hero"></button><button class="ndb" data-section="dustbin"></button><button class="ndb" data-section="icle"></button><button class="ndb" data-section="graffitive"></button><button class="ndb" data-section="dogbot"></button><button class="ndb" data-section="platform"></button><button class="ndb" data-section="ecosystem"></button><button class="ndb" data-section="closing"></button></nav>
+<nav class="nd" id="navDots"><button class="ndb active" data-section="hero"></button><button class="ndb" data-section="dustbin"></button><button class="ndb" data-section="icle"></button><button class="ndb" data-section="graffitive"></button><button class="ndb" data-section="dogbot"></button><button class="ndb" data-section="platform"></button><button class="ndb" data-section="ecosystem"></button><button class="ndb" data-section="concepts"></button><button class="ndb" data-section="closing"></button></nav>
 
 <section class="hero" id="hero">
+<div class="hero-logo" id="heroLogo">
+  <div class="hero-logo-glow"></div>
+  <img src="images/logo1_transparent.png" alt="IdeaSpectrum" class="hero-logo-img">
+</div>
 <div class="hero-ov">A New Methodology for Innovation Education</div>
 <h1>Help students think <em>deeper,</em><br>see <em>wider,</em> challenge <em>more.</em></h1>
 <p class="hero-sub">IdeaSpectrum is four standalone methods that help students slow down, look through multiple lenses, challenge assumptions, and reflect &mdash; with or without technology.</p>
@@ -197,7 +229,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div>
 
 <section class="ts" id="dustbin"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--dg)">Method 01</div><h2>IdeaDustbin</h2><div class="su">Structured incubation for innovation thinking</div></div>
+<div class="th"><div class="tn" style="color:var(--dg)">Method 01</div><h2><img src="images/bin5.png" alt="IdeaDustbin" class="img-icon">IdeaDustbin</h2><div class="su">Structured incubation for innovation thinking</div></div>
 <div class="td">Great ideas rarely arrive fully formed. IdeaDustbin introduces <strong>deliberate incubation</strong> &mdash; a structured pause where fragments of thinking are deposited, sealed, and revisited later. The composting metaphor: unfinished thoughts become the substrate for stronger ideas. <strong>No AI required.</strong></div>
 <div class="tb" style="border-color:rgba(74,124,89,.12)">
 <div class="tl" style="background:rgba(74,124,89,.15);color:var(--dg)">Try It &mdash; Drop fragments into the compost</div>
@@ -215,6 +247,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <section class="ts" id="icle"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--ig)">Method 02</div><h2>ICLE Framework</h2><div class="su">Idea Concept Lens Evolution &mdash; Multidisciplinary idea expansion</div></div>
 <div class="td">ICLE helps students add depth to their ideas. It uses <strong>14 conceptual lenses</strong> across 5 stages to refract a single idea through multiple domains &mdash; from numbers and structure, through living systems and human behaviour, to meaning and cosmic-scale futures. Published white paper (DOI: 10.5281/zenodo.19024288). <strong>Works as a physical card deck.</strong></div>
+<img src="images/ICLE%20Universe.png" alt="ICLE Universe" class="img-full">
 <div class="tb" style="border-color:rgba(196,136,60,.1)">
 <div class="tl" style="background:rgba(196,136,60,.12);color:var(--ig)">Try It &mdash; Pick a lens and see what questions it generates</div>
 <div class="tsc" id="iSc" style="border-color:var(--i)"></div>
@@ -226,8 +259,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div></section>
 
 <section class="ts" id="graffitive"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><h2>Graffitive</h2><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
+<div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><h2><img src="images/Master%20G%20TM.png" alt="Graffitive Mascot" class="img-mascot">Graffitive</h2><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
 <div class="td">Graffitive helps students stress-test ideas through <strong>productive conflict</strong>. Students write directly over each other&rsquo;s ideas using five Spray Cans. The result is a layered palimpsest &mdash; a visible record of how ideas evolve through challenge. <strong>Graffitive turns critique into a creative act.</strong></div>
+<img src="images/graf2.jpg" alt="Graffitive" class="img-full">
 <div class="tb" style="border-color:rgba(181,70,94,.1)">
 <div class="tl" style="background:rgba(181,70,94,.12);color:var(--gg)">Try It &mdash; Layer the five Spray Cans onto an idea</div>
 <div class="tsc" id="gSc" style="border-color:var(--g)"></div>
@@ -245,7 +279,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div></section>
 
 <section class="ts" id="dogbot"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--dbg)">Method 04</div><h2>Socratic AI Companion</h2><div class="su">MBA Dog Bot &mdash; AI that asks questions before giving answers</div></div>
+<div class="th"><div class="tn" style="color:var(--dbg)">Method 04</div><h2><img src="images/Birdy2.png" alt="Dog Bot" class="img-mascot" style="max-width:100px">Socratic AI Companion</h2><div class="su">MBA Dog Bot &mdash; AI that asks questions before giving answers</div></div>
 <div class="td">MBA Dog Bot helps students think more carefully with AI rather than just getting answers from it. It operates in <strong>Socratic mode by default</strong>, prompting students to clarify assumptions, explore implications, and connect ideas. Faculty control what the AI can reference. <strong>AI as thinking partner, not shortcut.</strong></div>
 <div class="tb" style="border-color:rgba(74,111,165,.1)">
 <div class="tl" style="background:rgba(74,111,165,.12);color:var(--dbg)">Try It &mdash; A Socratic conversation about your idea</div>
@@ -282,10 +316,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <div style="margin-top:20px;padding:20px;background:rgba(155,126,216,.05);border:1px solid rgba(155,126,216,.12);border-radius:var(--r)"><p style="font-size:14px;color:var(--t)"><strong style="color:var(--sp)">Every method works standalone.</strong> A faculty member can adopt ICLE cards in one module without touching the others. Or run Graffitive workshops independently. The ecosystem is modular by design.</p></div>
 </div></section>
 
+<section class="ts" id="concepts"><div class="ctn">
+<div class="th"><div class="tn" style="color:var(--sp)">Foundational Concepts</div><h2>Two Ideas That Shape Everything</h2><div class="su">These principles run through every tool in the IdeaSpectrum ecosystem.</div></div>
+<div class="tmk">
+<div class="tmk-card mvs">
+<div class="tmk-tm">Trademarked Concept</div>
+<div class="tmk-name">Minimum Viable Soul<sup>&trade;</sup></div>
+<div class="tmk-tag">The smallest unit of human ideation</div>
+<div class="tmk-desc">Before a business model, before a pitch deck, before a prototype &mdash; there is a fragment of genuine human insight. Minimum Viable Soul&trade; is the irreducible core of an idea: the part that cannot be generated by AI, copied from a competitor, or manufactured in a brainstorm. It is what you actually believe, what you have actually noticed, what you actually care about. Every tool in IdeaSpectrum is designed to protect and develop this core &mdash; not to replace it with something faster or louder.</div>
+</div>
+<div class="tmk-card ail">
+<div class="tmk-tm">Trademarked Concept</div>
+<div class="tmk-name">Angel-in-the-Loop<sup>&trade;</sup></div>
+<div class="tmk-tag">The ethical layer in every decision</div>
+<div class="tmk-desc">AI can accelerate ideation, but acceleration without ethics produces faster mistakes. Angel-in-the-Loop&trade; is the principle that every AI-assisted step in IdeaSpectrum includes an ethical checkpoint &mdash; a moment where the student is prompted to consider who benefits, who is harmed, what values are embedded, and what assumptions remain unchallenged. It is not a filter or a restriction. It is a habit of mind: the reflex to ask &ldquo;should we?&rdquo; before &ldquo;can we?&rdquo; The angel is not the AI. The angel is the student.</div>
+</div>
+</div>
+</div></section>
+
 <section class="cls" id="closing"><div class="ctn">
 <h2>How would you like to take this forward?</h2>
-<p>These are methodologies for deeper student thinking. Each works with paper, workshops, or digital tools. We would like to explore how they might fit within your programmes.</p>
-<div class="cq">&ldquo;Our hope is not that this becomes a product immediately. Our hope is that the university might explore it as a pedagogical experiment &mdash; and perhaps help shape the future of innovation education.&rdquo;</div>
+<div class="cq">&ldquo;Think Profoundly. Feel Deeply. See Truly.&rdquo;&trade;</div>
+<div style="margin-top:24px"><p style="font-size:1rem;color:var(--td);max-width:520px;margin:0 auto;line-height:1.75">These are methodologies for deeper student thinking. Each works with paper, workshops, or digital tools. We would like to explore how they might fit within your programmes.</p></div>
 <div style="margin-top:48px"><p style="font-size:13px;color:var(--td)">Published white paper: DOI 10.5281/zenodo.19024288<br>Contact for pilot discussions</p></div>
 </div></section>
 
@@ -325,7 +377,7 @@ function spray(can){if(can!==sO[cs])return;var d=D[S],c=sC[cs],w=document.getEle
 function rDB(){var d=D[S].db;document.getElementById("cMsgs").innerHTML='<div class="bub bot">'+d.op+"</div>";document.getElementById("cCh").innerHTML=d.ch.map(function(c){return'<button class="cc" onclick="dbR('+c.id+')">'+c.t+"</button>"}).join("")}
 function dbR(id){var n=D[S].db.tr[id],m=document.getElementById("cMsgs"),ch=document.getElementById("cCh");var u=document.createElement("div");u.className="bub usr";u.textContent=n.u;m.appendChild(u);ch.innerHTML='<div style="text-align:center;padding:8px"><span style="color:var(--td);font-size:12px;animation:pulse 1s infinite">Thinking...</span></div>';setTimeout(function(){var b=document.createElement("div");b.className="bub bot";b.textContent=n.b;m.appendChild(b);m.scrollTop=m.scrollHeight;if(n.c&&n.c.length>0){ch.innerHTML=n.c.map(function(c){return'<button class="cc" onclick="dbR('+c.id+')">'+c.t+"</button>"}).join("")}else{ch.innerHTML='<div style="text-align:center;padding:12px;font-size:13px;color:var(--td);font-style:italic">The Socratic method does not give you the answer.<br>It gives you better questions.</div>'}},800)}
 function rE(){var d=D[S].eco,ct=document.getElementById("eFlow");ct.innerHTML="";d.forEach(function(s,i){var last=i===d.length-1;var cv="var("+cM[s.cl]+")";var gv="var("+cG[s.cl]+")";var h='<div class="fs"><div class="fcon"><div class="fdot" style="border-color:'+cv+(last?";background:"+cv:"")+'"></div>';if(!last)h+='<div class="fln" style="background:'+cv+'"></div>';h+='</div><div class="fct"><h4 style="color:'+gv+'">'+s.tl+" \u2014 "+s.wk+"</h4><p>"+s.tx+"</p>";if(s.id)h+='<div class="fi" style="border-color:'+cv+'">'+s.id+"</div>";h+="</div></div>";ct.innerHTML+=h})}
-var sIds=["hero","dustbin","icle","graffitive","dogbot","platform","ecosystem","closing"];
+var sIds=["hero","dustbin","icle","graffitive","dogbot","platform","ecosystem","concepts","closing"];
 var dots=document.querySelectorAll(".ndb");
 var sOb=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){dots.forEach(function(d){d.classList.remove("active")});var dt=document.querySelector('.ndb[data-section="'+e.target.id+'"]');if(dt)dt.classList.add("active")}})},{threshold:.3});
 sIds.forEach(function(id){var el=document.getElementById(id);if(el)sOb.observe(el)});
@@ -773,6 +825,8 @@ function pNav(){
 }
 rPScens();rPStep();
 sw(0);
+var heroLogo=document.getElementById('heroLogo');
+window.addEventListener('scroll',function(){if(heroLogo){heroLogo.classList.toggle('faded',window.scrollY>100)}});
 </script>
 </body>
 </html>
