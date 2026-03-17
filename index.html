@@ -57,6 +57,28 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .iu-tree-lg{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:10px}
 .iu-tree-li{display:flex;align-items:center;gap:5px;color:#8a8880}
 .iu-tree-ld{width:7px;height:7px;border-radius:50%}
+.fb-btn{position:fixed;bottom:24px;right:24px;padding:10px 20px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:24px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;z-index:1000;transition:all 0.25s;backdrop-filter:blur(8px)}
+.fb-btn:hover{background:rgba(155,126,216,0.22);transform:translateY(-2px)}
+.fb-panel{position:fixed;bottom:24px;right:24px;width:380px;max-height:80vh;background:#12121a;border:1px solid rgba(255,255,255,0.08);border-radius:16px;z-index:1001;overflow-y:auto;transform:translateY(20px);opacity:0;pointer-events:none;transition:all 0.3s ease}
+.fb-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.fb-panel.open+.fb-btn,.fb-panel.open~.fb-btn{display:none}
+.fb-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.fb-head span{font-family:'Instrument Serif',serif;font-size:1.1rem;color:#fff}
+.fb-close{background:none;border:none;color:#8a8880;font-size:22px;cursor:pointer;padding:0 4px;transition:color 0.2s}
+.fb-close:hover{color:#fff}
+.fb-form{padding:16px 20px}
+.fb-group{margin-bottom:16px}
+.fb-label{display:block;font-size:13px;color:#e8e6e1;margin-bottom:8px;font-weight:500}
+.fb-checks{display:flex;flex-wrap:wrap;gap:6px}
+.fb-chk{display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:6px;font-size:12px;color:#8a8880;cursor:pointer;transition:all 0.2s}
+.fb-chk:hover{border-color:rgba(155,126,216,0.2);color:#e8e6e1}
+.fb-chk input{accent-color:#9b7ed8}
+.fb-chk input:checked+span{color:#9b7ed8}
+.fb-input{width:100%;padding:10px 14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:#e8e6e1;font-family:'DM Sans',sans-serif;font-size:13px;transition:border-color 0.2s;resize:vertical}
+.fb-input:focus{outline:none;border-color:rgba(155,126,216,0.4)}
+.fb-input::placeholder{color:#555}
+.fb-submit{width:100%;padding:12px;background:#9b7ed8;color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.25s;margin-top:8px}
+.fb-submit:hover{background:#b592e8;transform:translateY(-1px)}
 .td{font-size:1rem;color:var(--t);max-width:640px;margin-bottom:40px;line-height:1.75}
 .td strong{color:var(--tw);font-weight:500}
 .tb{background:var(--bg-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--rl);padding:40px;position:relative;overflow:hidden}
@@ -141,7 +163,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .img-icon{max-width:120px;border-radius:var(--r);opacity:.88;float:right;margin:0 0 16px 16px;border:1px solid rgba(255,255,255,.06)}
 .img-logo{display:block;max-width:180px;margin:0 auto 24px;opacity:.95}
 .hero-bg-accent{position:absolute;top:0;right:0;width:40%;max-width:400px;height:100%;object-fit:cover;opacity:.08;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent)}
-@media(max-width:768px){.iu-tree-c{min-height:380px}.th-mascot{max-width:60px}.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
+@media(max-width:768px){.fb-panel{width:calc(100vw - 32px);right:16px;bottom:16px}.fb-btn{bottom:16px;right:16px;font-size:12px;padding:8px 16px}.iu-tree-c{min-height:380px}.th-mascot{max-width:60px}.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
 
 /* PLATFORM SECTION */
 .po{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
@@ -920,5 +942,22 @@ n.addEventListener("mouseleave",function(){tip.classList.remove("on");document.g
 });
 })();
 </script>
+<button class="fb-btn" id="fbBtn" onclick="document.getElementById('fbPanel').classList.toggle('open')">Share Feedback</button>
+<div class="fb-panel" id="fbPanel">
+<div class="fb-head"><span>Quick Feedback</span><button class="fb-close" onclick="document.getElementById('fbPanel').classList.remove('open')">&times;</button></div>
+<form name="ideaspectrum-feedback" method="POST" data-netlify="true" class="fb-form" onsubmit="setTimeout(function(){document.getElementById('fbPanel').innerHTML='<div style=padding:40px;text-align:center;color:#9b7ed8;font-family:Instrument\ Serif,serif;font-size:1.2rem>Thank you! We\'ll be in touch.</div>';},100)">
+<input type="hidden" name="form-name" value="ideaspectrum-feedback">
+<div class="fb-group"><label class="fb-label">Which tools interest you?</label>
+<div class="fb-checks"><label class="fb-chk"><input type="checkbox" name="tools" value="IdeaDustbin"><span>IdeaDustbin</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="ICLE"><span>ICLE Framework</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="Graffitive"><span>Graffitive</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="DogBot"><span>Dog Bot</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="Full"><span>Full Ecosystem</span></label></div></div>
+<div class="fb-group"><label class="fb-label">Your reaction?</label>
+<div class="fb-checks"><label class="fb-chk"><input type="radio" name="reaction" value="pilot"><span>I'd pilot this</span></label><label class="fb-chk"><input type="radio" name="reaction" value="questions"><span>Interesting — I have questions</span></label><label class="fb-chk"><input type="radio" name="reaction" value="demo"><span>I'd like a demo</span></label><label class="fb-chk"><input type="radio" name="reaction" value="not-for-me"><span>Not for my context</span></label></div></div>
+<div class="fb-group"><label class="fb-label">Your role</label>
+<div class="fb-checks"><label class="fb-chk"><input type="radio" name="role" value="faculty"><span>Faculty</span></label><label class="fb-chk"><input type="radio" name="role" value="director"><span>Programme Director</span></label><label class="fb-chk"><input type="radio" name="role" value="innovation"><span>Innovation Lead</span></label><label class="fb-chk"><input type="radio" name="role" value="student"><span>Student</span></label><label class="fb-chk"><input type="radio" name="role" value="other"><span>Other</span></label></div></div>
+<div class="fb-group"><label class="fb-label">Institution or programme <span style="opacity:0.5">(optional)</span></label><input type="text" name="institution" class="fb-input" placeholder="e.g. Open University MBA"></div>
+<div class="fb-group"><label class="fb-label">What would convince you? <span style="opacity:0.5">(optional)</span></label><textarea name="convince" class="fb-input" rows="3" placeholder="What would you need to see?"></textarea></div>
+<div class="fb-group"><label class="fb-label">Email for follow-up <span style="opacity:0.5">(optional)</span></label><input type="email" name="email" class="fb-input" placeholder="you@university.ac.uk"></div>
+<button type="submit" class="fb-submit">Send Feedback</button>
+</form>
+</div>
 </body>
 </html>
