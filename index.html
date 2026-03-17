@@ -44,11 +44,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .iu-tree-s{text-align:center;font-size:11px;color:#8a8880;letter-spacing:1px;margin-bottom:16px}
 .iu-tree-c{position:relative;width:100%;aspect-ratio:10/14;min-height:480px}
 .iu-tree-sv{width:100%;height:100%}
-.tnd{cursor:pointer;transition:transform 0.25s}
-.tnd:hover{transform:scale(1.14)}
-.tnd:hover .tnd-o{stroke-width:2.5;stroke-opacity:1}
-.tnd:hover .tnd-glow{r:28;opacity:0.12}
-.tnd-o{transition:all 0.25s}
+.tnd{cursor:pointer;transition:all 0.4s ease}
+.tnd:hover .tnd-o{stroke-width:2;stroke-opacity:1}
+.tnd:hover .tnd-glow{opacity:0.15}
+.tnd-o{transition:all 0.4s}
 .tnd-glow{transition:all 0.4s}
 .tnd-tip{position:absolute;background:#12121a;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:20;width:220px;font-family:'DM Sans',sans-serif}
 .tnd-tip.on{opacity:1}
@@ -291,6 +290,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <path d="M300 350 Q320 280, 400 180 Q420 150, 390 80" fill="none" stroke="#d4a05c" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
 <path d="M300 350 Q300 240, 300 60" fill="none" stroke="#d4a05c" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
 <text x="300" y="790" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#7a9ec4" fill-opacity="0.4" letter-spacing="3">STRUCTURAL · ICLE-1</text>
+<line id="tnd-connect" x1="0" y1="0" x2="300" y2="0" stroke="#fff" stroke-width="0.5" stroke-opacity="0" style="transition:stroke-opacity 0.3s"/>
 <g class="tnd" data-l="Arithmeticle" data-d="Structural" data-c="#7a9ec4" data-q="What are the key numbers? What scale is needed?"><circle class="tnd-glow" cx="220" cy="730" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="220" cy="730" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="220" y="733" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Arith</text></g>
 <g class="tnd" data-l="Geometricle" data-d="Structural" data-c="#7a9ec4" data-q="What spatial pattern defines this? Centralised or distributed?"><circle class="tnd-glow" cx="300" cy="740" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="300" cy="740" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="300" y="743" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Geo</text></g>
 <g class="tnd" data-l="Algorithmicle" data-d="Structural" data-c="#7a9ec4" data-q="What rules govern this? What process logic drives it?"><circle class="tnd-glow" cx="380" cy="730" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="380" cy="730" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="380" y="733" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Algo</text></g>
@@ -908,9 +908,15 @@ if(top<0)top=8;
 if(top+120>w.height)top=w.height-130;
 tip.style.left=left+"px";
 tip.style.top=top+"px";
+var cx=parseFloat(n.querySelector('.tnd-o').getAttribute('cx'));
+var cy=parseFloat(n.querySelector('.tnd-o').getAttribute('cy'));
+var cl=document.getElementById('tnd-connect');
+cl.setAttribute('x1',cx);cl.setAttribute('y1',cy);
+cl.setAttribute('x2','300');cl.setAttribute('y2',cy);
+cl.setAttribute('stroke',n.dataset.c);cl.setAttribute('stroke-opacity','0.2');
 tip.classList.add("on");
 });
-n.addEventListener("mouseleave",function(){tip.classList.remove("on")});
+n.addEventListener("mouseleave",function(){tip.classList.remove("on");document.getElementById('tnd-connect').setAttribute('stroke-opacity','0')});
 });
 })();
 </script>
