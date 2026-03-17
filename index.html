@@ -426,11 +426,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <div style="margin-top:48px;padding:32px;background:#12121a;border:1px solid rgba(255,255,255,0.06);border-radius:20px;max-width:480px;margin-left:auto;margin-right:auto;text-align:center">
 <h3 style="font-family:'Instrument Serif',serif;font-size:1.3rem;color:#fff;font-weight:400;margin-bottom:8px">Start a Conversation</h3>
 <p style="font-size:13px;color:#8a8880;margin-bottom:20px">Interested in piloting IdeaSpectrum in your programme?</p>
-<p style="font-size:15px;color:#e8e6e1;font-weight:500;margin-bottom:4px">Denish Velusamy</p>
-<p style="font-size:12px;color:#8a8880;margin-bottom:20px">OU MBA Alumni — Open University Business School</p>
+<p style="font-size:15px;color:#e8e6e1;font-weight:500;margin-bottom:4px">Denish Patel</p>
+<p style="font-size:12px;color:#8a8880;margin-bottom:20px">OU MBA Alumni — Open University Business School (R8199231)</p>
 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-<a href="mailto:denish@ideaspectrum.com" style="padding:10px 24px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:8px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.25s">Email Denish</a>
-<a href="#" style="padding:10px 24px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:8px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.25s">Book a Discussion</a>
+<a href="mailto:Danpatel2015@yahoo.co.uk" style="padding:10px 24px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:8px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.25s">Email Denish</a>
+<a href="mailto:Danpatel2015@yahoo.co.uk?subject=IdeaSpectrum%20Discussion%20Request" style="padding:10px 24px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:8px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.25s">Book a Discussion</a>
+<a href="tel:07889466439" style="padding:10px 24px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:8px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.25s">Call Denish</a>
 </div>
 </div>
 </div></section>
@@ -951,11 +952,19 @@ tip.classList.add("on");
 n.addEventListener("mouseleave",function(){tip.classList.remove("on");document.getElementById('tnd-connect').setAttribute('stroke-opacity','0')});
 });
 })();
+document.querySelector('.fb-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=e.target;
+  var data=new FormData(form);
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()})
+  .then(function(){document.getElementById('fbPanel').innerHTML='<div style="padding:40px;text-align:center"><div style="color:#9b7ed8;font-family:Instrument Serif,serif;font-size:1.2rem;margin-bottom:8px">Thank you!</div><div style="color:#8a8880;font-size:13px">Your feedback has been received.</div></div>';})
+  .catch(function(){document.getElementById('fbPanel').innerHTML='<div style="padding:40px;text-align:center;color:#e05a78">Something went wrong. Please email Danpatel2015@yahoo.co.uk instead.</div>';});
+});
 </script>
 <button class="fb-btn" id="fbBtn" onclick="document.getElementById('fbPanel').classList.toggle('open')">Share Feedback</button>
 <div class="fb-panel" id="fbPanel">
 <div class="fb-head"><span>Quick Feedback</span><button class="fb-close" onclick="document.getElementById('fbPanel').classList.remove('open')">&times;</button></div>
-<form name="ideaspectrum-feedback" method="POST" data-netlify="true" class="fb-form" onsubmit="setTimeout(function(){document.getElementById('fbPanel').innerHTML='<div style=padding:40px;text-align:center;color:#9b7ed8;font-family:Instrument\ Serif,serif;font-size:1.2rem>Thank you! We\'ll be in touch.</div>';},100)">
+<form name="ideaspectrum-feedback" method="POST" data-netlify="true" class="fb-form">
 <input type="hidden" name="form-name" value="ideaspectrum-feedback">
 <div class="fb-group"><label class="fb-label">Which tools interest you?</label>
 <div class="fb-checks"><label class="fb-chk"><input type="checkbox" name="tools" value="IdeaDustbin"><span>IdeaDustbin</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="ICLE"><span>ICLE Framework</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="Graffitive"><span>Graffitive</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="DogBot"><span>Dog Bot</span></label><label class="fb-chk"><input type="checkbox" name="tools" value="Full"><span>Full Ecosystem</span></label></div></div>
