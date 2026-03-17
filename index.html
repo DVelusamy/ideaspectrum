@@ -116,7 +116,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 @keyframes di{from{opacity:0;transform:translateY(-10px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes bd{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(6px)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@media(max-width:768px){.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}}
+@media(max-width:768px){.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
 
 /* PLATFORM SECTION */
 .po{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
@@ -147,6 +147,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .pwl{padding:10px 14px;border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.6;animation:fu .3s ease}
 .pwl .pwt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:3px;margin-bottom:4px;display:inline-block}
 .pwl .pwa{font-size:11px;color:var(--td);font-style:italic;margin-top:4px}
+
+/* PIPELINE & EVOLUTION STRIP */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:32px}
+.pgrid .pb{min-width:unset;max-width:none;width:100%}
+.pipe{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:20px;padding:16px 0}
+.pipe-node{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1}
+.pipe-dot{width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .5s ease;background:var(--bg)}
+.pipe-dot:hover{border-color:rgba(155,126,216,.4);transform:scale(1.1)}
+.pipe-dot.lit{border-color:var(--sp);background:rgba(155,126,216,.12);box-shadow:0 0 24px rgba(155,126,216,.2)}
+.pipe-dot.done{border-color:var(--dg);background:rgba(106,173,122,.1);box-shadow:0 0 12px rgba(106,173,122,.1)}
+.pipe-lbl{font-size:11px;color:var(--td);font-weight:500;transition:color .4s}
+.pipe-lbl.lit{color:var(--sp)}
+.pipe-lbl.done{color:var(--dg)}
+.pipe-line{flex:1;height:2px;background:rgba(255,255,255,.06);max-width:100px;position:relative;overflow:hidden}
+.pipe-fill{position:absolute;top:0;left:0;height:100%;width:0;background:linear-gradient(90deg,var(--dg),var(--sp));border-radius:2px;transition:width .6s ease}
+.pipe-line.done .pipe-fill{width:100%}
+.evo{margin-bottom:24px;padding:20px 24px;background:var(--bg-card);border:1px solid rgba(155,126,216,.1);border-radius:var(--rl);position:relative;overflow:hidden;transition:border-color .4s}
+.evo::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--d),var(--i),var(--g),var(--sp));opacity:.4;transition:opacity .3s}
+.evo-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.evo-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--td)}
+.evo-badge{padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;border:1px solid;transition:all .5s ease}
+.evo-badge.s1{color:var(--dg);border-color:rgba(106,173,122,.3);background:rgba(106,173,122,.08)}
+.evo-badge.s2{color:var(--ig);border-color:rgba(232,168,76,.3);background:rgba(232,168,76,.08)}
+.evo-badge.s3{color:var(--gg);border-color:rgba(224,90,120,.3);background:rgba(224,90,120,.08)}
+.evo-badge.s4{color:var(--sp);border-color:rgba(155,126,216,.3);background:rgba(155,126,216,.08)}
+.evo-text{font-family:'Instrument Serif',serif;font-size:1.05rem;color:var(--tw);line-height:1.55;min-height:24px;animation:fu .4s ease}
 </style>
 </head>
 <body>
@@ -154,7 +180,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 
 <section class="hero" id="hero">
 <div class="hero-ov">A New Methodology for Innovation Education</div>
-<h1>Students are taught <em>what</em> to think.<br>Not how to think <em>deeply.</em></h1>
+<h1>Help students think <em>deeper,</em><br>see <em>wider,</em> challenge <em>more.</em></h1>
 <p class="hero-sub">IdeaSpectrum is four standalone methods that help students slow down, look through multiple lenses, challenge assumptions, and reflect &mdash; with or without technology.</p>
 <div class="hero-tag">From Soil to Sky, Compost to Cosmos.</div>
 <div class="sh"><span>Explore</span><div class="sa"></div></div>
@@ -164,7 +190,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <h3>Pick a scenario to explore through all four methods</h3>
 <p>Each method below will use your chosen idea. You can switch at any time.</p>
 <div class="so">
-<button class="sc-btn active" onclick="sw(0)"><span class="sl">Scenario A</span><span class="st">A subscription-based mental health app for university students</span></button>
+<button class="sc-btn active" onclick="sw(0)"><span class="sl">Scenario A</span><span class="st">A peer-to-peer skill-sharing platform for university students</span></button>
 <button class="sc-btn" onclick="sw(1)"><span class="sl">Scenario B</span><span class="st">A circular economy model for campus food waste</span></button>
 <button class="sc-btn" onclick="sw(2)"><span class="sl">Scenario C</span><span class="st">An AI tutoring service for underserved schools</span></button>
 </div>
@@ -172,7 +198,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 
 <section class="ts" id="dustbin"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--dg)">Method 01</div><h2>IdeaDustbin</h2><div class="su">Structured incubation for innovation thinking</div></div>
-<div class="td">MBA students move too quickly from idea to solution. IdeaDustbin introduces <strong>deliberate incubation</strong> &mdash; a structured pause where fragments of thinking are deposited, sealed, and revisited later. The composting metaphor: unfinished thoughts become the substrate for stronger ideas. <strong>No AI required.</strong></div>
+<div class="td">Great ideas rarely arrive fully formed. IdeaDustbin introduces <strong>deliberate incubation</strong> &mdash; a structured pause where fragments of thinking are deposited, sealed, and revisited later. The composting metaphor: unfinished thoughts become the substrate for stronger ideas. <strong>No AI required.</strong></div>
 <div class="tb" style="border-color:rgba(74,124,89,.12)">
 <div class="tl" style="background:rgba(74,124,89,.15);color:var(--dg)">Try It &mdash; Drop fragments into the compost</div>
 <div class="tsc" id="dSc" style="border-color:var(--d)"></div>
@@ -188,7 +214,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 
 <section class="ts" id="icle"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--ig)">Method 02</div><h2>ICLE Framework</h2><div class="su">Idea Concept Lens Evolution &mdash; Multidisciplinary idea expansion</div></div>
-<div class="td">Most ideation methods produce breadth without depth. ICLE uses <strong>14 conceptual lenses</strong> across 5 stages to refract a single idea through multiple domains &mdash; from numbers and structure, through living systems and human behaviour, to meaning and cosmic-scale futures. Published white paper (DOI: 10.5281/zenodo.19024288). <strong>Works as a physical card deck.</strong></div>
+<div class="td">ICLE helps students add depth to their ideas. It uses <strong>14 conceptual lenses</strong> across 5 stages to refract a single idea through multiple domains &mdash; from numbers and structure, through living systems and human behaviour, to meaning and cosmic-scale futures. Published white paper (DOI: 10.5281/zenodo.19024288). <strong>Works as a physical card deck.</strong></div>
 <div class="tb" style="border-color:rgba(196,136,60,.1)">
 <div class="tl" style="background:rgba(196,136,60,.12);color:var(--ig)">Try It &mdash; Pick a lens and see what questions it generates</div>
 <div class="tsc" id="iSc" style="border-color:var(--i)"></div>
@@ -201,7 +227,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 
 <section class="ts" id="graffitive"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><h2>Graffitive</h2><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
-<div class="td">Most innovation methods assume collaboration should be polite. Graffitive introduces <strong>productive conflict</strong>. Students write directly over each other&rsquo;s ideas using five Spray Cans. The result is a layered palimpsest &mdash; a visible record of how ideas evolve through challenge. <strong>Graffitive turns critique into a creative act.</strong></div>
+<div class="td">Graffitive helps students stress-test ideas through <strong>productive conflict</strong>. Students write directly over each other&rsquo;s ideas using five Spray Cans. The result is a layered palimpsest &mdash; a visible record of how ideas evolve through challenge. <strong>Graffitive turns critique into a creative act.</strong></div>
 <div class="tb" style="border-color:rgba(181,70,94,.1)">
 <div class="tl" style="background:rgba(181,70,94,.12);color:var(--gg)">Try It &mdash; Layer the five Spray Cans onto an idea</div>
 <div class="tsc" id="gSc" style="border-color:var(--g)"></div>
@@ -220,7 +246,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 
 <section class="ts" id="dogbot"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--dbg)">Method 04</div><h2>Socratic AI Companion</h2><div class="su">MBA Dog Bot &mdash; AI that asks questions before giving answers</div></div>
-<div class="td">Students increasingly use AI to generate answers. MBA Dog Bot does the opposite: it operates in <strong>Socratic mode by default</strong>, prompting students to clarify assumptions, explore implications, and connect ideas. Faculty control what the AI can reference. <strong>AI as thinking partner, not shortcut.</strong></div>
+<div class="td">MBA Dog Bot helps students think more carefully with AI rather than just getting answers from it. It operates in <strong>Socratic mode by default</strong>, prompting students to clarify assumptions, explore implications, and connect ideas. Faculty control what the AI can reference. <strong>AI as thinking partner, not shortcut.</strong></div>
 <div class="tb" style="border-color:rgba(74,111,165,.1)">
 <div class="tl" style="background:rgba(74,111,165,.12);color:var(--dbg)">Try It &mdash; A Socratic conversation about your idea</div>
 <div class="cw"><div class="chd"><span style="font-size:20px">&#x1f415;</span><span>MBA Dog Bot</span><span class="mb">Socratic Mode</span></div>
@@ -232,12 +258,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <section class="ts" id="platform"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--sp)">The Connected Digital Platform</div><h2>All Four Tools, One Flow</h2><div class="su">See how an idea evolves through the complete IdeaSpectrum system &mdash; fully digital, fully integrated.</div></div>
 <div class="td">Each method above works standalone. But when connected as a digital platform, ideas flow between tools &mdash; composted fragments feed into lenses, expanded concepts get challenged on the wall, and Dog Bot weaves Socratic questions through every stage. Pick a scenario and step through the full journey.</div>
-<div class="po" id="pScens"></div>
-<div class="stp" id="pSteps">
-<button class="stb act" onclick="goStep(0)">&#x1f5d1;&#xfe0f; IdeaDustbin</button>
-<button class="stb" onclick="goStep(1)">&#x1f52d; ICLE</button>
-<button class="stb" onclick="goStep(2)">&#x1f3a8; Graffitive</button>
-<button class="stb" onclick="goStep(3)">&#x1f415; Dog Bot</button>
+<div class="pgrid" id="pScens"></div>
+<div class="pipe" id="pPipe">
+<div class="pipe-node"><div class="pipe-dot lit" id="pp0" onclick="goStep(0)" style="cursor:pointer">&#x1f5d1;&#xfe0f;</div><div class="pipe-lbl lit" id="pl0">IdeaDustbin</div></div>
+<div class="pipe-line" id="pL0"><div class="pipe-fill"></div></div>
+<div class="pipe-node"><div class="pipe-dot" id="pp1" onclick="goStep(1)" style="cursor:pointer">&#x1f52d;</div><div class="pipe-lbl" id="pl1">ICLE</div></div>
+<div class="pipe-line" id="pL1"><div class="pipe-fill"></div></div>
+<div class="pipe-node"><div class="pipe-dot" id="pp2" onclick="goStep(2)" style="cursor:pointer">&#x1f3a8;</div><div class="pipe-lbl" id="pl2">Graffitive</div></div>
+<div class="pipe-line" id="pL2"><div class="pipe-fill"></div></div>
+<div class="pipe-node"><div class="pipe-dot" id="pp3" onclick="goStep(3)" style="cursor:pointer">&#x1f415;</div><div class="pipe-lbl" id="pl3">Dog Bot</div></div>
+</div>
+<div class="evo" id="pEvo">
+<div class="evo-top"><span class="evo-lbl">Idea Evolution</span><span class="evo-badge s1" id="evoBadge">Seed &middot; ICLE-1</span></div>
+<div class="evo-text" id="evoText"></div>
 </div>
 <div class="plp" id="pContent"></div>
 </div></section>
@@ -261,11 +294,11 @@ var S=0,dc=0,cs=0,sO=["tag","scratch","spray","remix","piece"];
 var sC=[{bg:"rgba(255,180,80,.12)",tg:"rgba(255,180,80,.25)",tx:"#ffb450",lb:"TAG"},{bg:"rgba(255,100,100,.1)",tg:"rgba(255,100,100,.2)",tx:"#ff6464",lb:"SCRATCH"},{bg:"rgba(100,180,255,.1)",tg:"rgba(100,180,255,.2)",tx:"#64b4ff",lb:"SPRAY"},{bg:"rgba(180,120,255,.1)",tg:"rgba(180,120,255,.2)",tx:"#b478ff",lb:"REMIX"},{bg:"rgba(120,255,180,.1)",tg:"rgba(120,255,180,.2)",tx:"#78ffb4",lb:"PIECE"}];
 var lM=[{n:"Arithmeticle",d:"Numbers",s:"ss"},{n:"Geometricle",d:"Structure",s:"ss"},{n:"Algorithmicle",d:"Process",s:"ss"},{n:"Biologicle",d:"Growth",s:"sl2"},{n:"Ecologicle",d:"Ecosystem",s:"sl2"},{n:"Psychologicle",d:"Mind",s:"sh2"},{n:"Anthropologicle",d:"Culture",s:"sh2"},{n:"Symbolicle",d:"Identity",s:"sm"},{n:"Metaphoricle",d:"Analogy",s:"sm"},{n:"Mythologicle",d:"Narrative",s:"sm"},{n:"Philosophicle",d:"Ethics",s:"sm"},{n:"Metaphysicle",d:"Reality",s:"sco"},{n:"Cosmologicle",d:"Patterns",s:"sco"},{n:"Cosmonicle",d:"Futures",s:"sco"}];
 var D=[
-{t:"A subscription-based mental health app for university students",fr:["Why do students avoid therapy?","Subscription fatigue is real","Peer support vs professional help","What if the app made you wait?","Gamification feels wrong here","University duty of care"],rv:"<h4>Compost reveals a pattern:</h4><p>Your fragments cluster around a <strong>tension between access and intentionality</strong>. Students avoid help, but subscription models push constant engagement. What if the app\u2019s core feature was <em>deliberate friction</em> \u2014 waiting periods, reflection prompts, earned access? The \u201Cduty of care\u201D fragment connects: universities might fund this <em>because</em> it is slow.</p><p style='margin-top:12px;font-size:12px;color:var(--td)'>This is what incubation surfaces. Not more ideas \u2014 <strong>better connections.</strong></p>",
-ic:{Arithmeticle:{q:["How many students need this before it is sustainable?","What is the cost-per-user threshold for university funding?","What ratio of human to automated support works?"],x:"The idea gains metrics: 500 students minimum, \u00A32.40/user/month if university-funded, 1:50 human-to-bot ratio."},Psychologicle:{q:["Why do students resist seeking help?","What cognitive biases affect engagement?","How does the app handle wanting help but fearing vulnerability?"],x:"The biggest barrier is not access \u2014 it is stigma and identity. The app must feel like a thinking tool, not a therapy portal."},Ecologicle:{q:["What other support systems does this interact with?","Could this displace existing counselling?","What happens if this app disappears?"],x:"The app must integrate with \u2014 not replace \u2014 NHS referrals, student unions, peer mentoring, and academic tutors."},Philosophicle:{q:["Whose responsibility is student mental health?","Should wellbeing be monetised?","What happens when profit motives meet vulnerable users?"],x:"If universities have a duty of care, this should not be a subscription \u2014 it should be infrastructure, funded like libraries."},Cosmonicle:{q:["How would this work in 50 years?","What if every university globally adopted this?","How does this scale to civilizational wellbeing?"],x:"At scale, this becomes a model for societal resilience infrastructure \u2014 proactive human development, not reactive healthcare."}},
-gs:"Students pay \u00A39.99/month for access to a mental health chatbot.",gd:{tag:"Assumes students want a chatbot. Assumes \u00A39.99 is affordable. Assumes subscriptions create commitment. Assumes mental health can be addressed through an app.",scratch:"What if the chatbot makes loneliness worse by replacing human contact? What if subscriptions create guilt when students cannot afford it \u2014 exactly when they need help most?",spray:"Community gardens do not charge subscriptions \u2014 they create shared spaces. What if mental health support worked like a commons? Free at point of use, funded collectively.",remix:"Merge the commons model with duty-of-care. University-funded wellbeing infrastructure + peer support + reflection tools + professional escalation. Not an app \u2014 a system.",piece:"The idea is no longer a chatbot for \u00A39.99. It is a university-embedded wellbeing commons \u2014 free, peer-facilitated, with incubation periods and professional pathways. Critique evolved it."},
-db:{op:"You are building a mental health app for students. Before features \u2014 what is the core problem you are actually trying to solve?",ch:[{t:"Students cannot afford therapy",id:1},{t:"Students do not know they need help",id:2},{t:"Universities are not doing enough",id:3}],tr:{1:{u:"Students cannot afford therapy",b:"That is a real barrier. But is the core problem cost, or something else? Many universities offer free counselling yet students do not use it. If therapy were free tomorrow, would the problem be solved?",c:[{t:"No \u2014 still stigma and waiting times",id:4},{t:"Yes \u2014 cost is the main barrier",id:5}]},2:{u:"Students do not know they need help",b:"So an awareness gap, not access. If students do not know they need help, how would a subscription app reach them? Who subscribes to something they do not think they need?",c:[{t:"Maybe the university subscribes on their behalf",id:6},{t:"Maybe it should not be positioned as mental health",id:7}]},3:{u:"Universities are not doing enough",b:"That frames your app as filling an institutional gap. But if the university is failing its duty of care, should the solution be a private subscription students pay for? Or should you sell to the university?",c:[{t:"The university should pay",id:8},{t:"Students prefer something independent",id:9}]},4:{u:"No \u2014 still stigma and waiting times",b:"Good. So stigma + access friction, not cost alone. A cheaper chatbot does not solve that. What design would reduce stigma? What would make a student feel safe without feeling like a patient?",c:[]},5:{u:"Yes \u2014 cost is the main barrier",b:"If cost is the barrier, why do free university counselling services have low uptake? What evidence would confirm cost is the primary blocker?",c:[]},6:{u:"Maybe the university subscribes on their behalf",b:"Now your business model shifted entirely. B2C becomes B2B institutional. That changes pricing, compliance, and who you are accountable to. Is that the product you want?",c:[]},7:{u:"Maybe it should not be positioned as mental health",b:"Powerful insight. Without clinical framing, what is this app? A reflection tool? A peer platform? Notice how positioning changes the entire product.",c:[]},8:{u:"The university should pay",b:"If the university pays, the university controls. They want data, compliance, integration. Your chatbot just became enterprise education software. Prepared for that?",c:[]},9:{u:"Students prefer something independent",b:"Trust advantage but funding problem. Independent means self-sustaining. Can a mental health app generate enough revenue without institutional support?",c:[]}}},
-eco:[{tl:"IdeaDustbin",wk:"Weeks 1\u20132",cl:"d",tx:"Fragments captured and sealed for incubation.",id:"\u201CStudents avoid therapy\u201D + \u201Csubscription fatigue\u201D + \u201Cwhat if the app made you wait?\u201D"},{tl:"ICLE Framework",wk:"Weeks 3\u20135",cl:"i",tx:"Composted ideas expanded through lenses.",id:"Through Psychologicle: help-seeking barriers. Through Ecologicle: app within university ecosystem. Through Philosophicle: whose responsibility?"},{tl:"Graffitive",wk:"Weeks 6\u20138",cl:"g",tx:"Peers challenge assumptions through layered critique.",id:"Tag: \u201CAssumes students want an app.\u201D Spray: Commons model. Remix: Community circles + reflection \u2014 a hybrid emerges."},{tl:"MBA Dog Bot",wk:"Throughout",cl:"db",tx:"Socratic questioning deepens reflection at every stage.",id:"\u201CYou identified friction as a feature. What does that mean for pricing? If waiting is valuable, what are students paying for?\u201D"},{tl:"Evolved Concept",wk:"Week 9\u201310",cl:"sp",tx:"No longer a chatbot. A university-funded, slow-access wellbeing infrastructure with deliberate friction, peer layers, and earned professional access."}]},
+{t:"A peer-to-peer skill-sharing platform for university students",fr:["Students have skills they never use in class","What if learning happened between students, not just from lecturers?","Time is the real currency at university","How do you trust a stranger to teach you?","Freelance platforms feel transactional","Campus communities are underutilised"],rv:"<h4>Compost reveals a pattern:</h4><p>Your fragments cluster around a <strong>tension between informal knowledge and formal structures</strong>. Students possess diverse skills but no mechanism connects them. The \u2018trust a stranger\u2019 fragment is key \u2014 skill-sharing needs <em>social proximity</em>, not just a matching algorithm. And \u2018time as currency\u2019 suggests a non-monetary exchange model.</p><p style='margin-top:12px;font-size:12px;color:var(--td)'>This is what incubation surfaces. Not more ideas \u2014 <strong>better connections.</strong></p>",
+ic:{Arithmeticle:{q:["How many students have teachable skills they are not using?","What is the cost of a one-hour peer session vs a professional tutor?","What ratio of supply to demand makes this viable?"],x:"The idea gains metrics: 70% of students have at least one teachable skill, peer sessions cost nothing vs \u00A325/hr tutoring, 3:1 supply-demand ratio needed."},Psychologicle:{q:["Why would a student teach for free?","What makes someone trust a peer over a professional?","How does teaching a skill reinforce your own learning?"],x:"Teaching deepens mastery. Students teach for identity and belonging, not money. Trust comes from shared context, not credentials."},Ecologicle:{q:["What other campus systems does this interact with?","Could this displace paid tutoring services?","What happens if key contributors graduate?"],x:"The platform must integrate with societies, career services, and academic departments \u2014 not compete with them. Knowledge transfer across cohorts is the sustainability challenge."},Philosophicle:{q:["Should knowledge exchange be free or compensated?","Who benefits most \u2014 the teacher or the learner?","Does formalising peer learning change its character?"],x:"If you monetise it, you create a marketplace. If you keep it free, you create a commons. The philosophical choice shapes the entire platform."},Cosmonicle:{q:["How would this work across every university globally?","What if peer learning became a recognised credential?","Could this reshape how we think about expertise?"],x:"At scale, this challenges the assumption that only credentialled people can teach. A civilizational shift from knowledge hoarding to knowledge sharing."}},
+gs:"Students pay \u00A35/hour to book peer tutoring sessions through an app.",gd:{tag:"Assumes students will pay peers. Assumes an app is needed. Assumes one-to-one sessions are the format. Assumes the problem is access to tutors.",scratch:"What if paying peers makes it feel like cheap tutoring rather than genuine exchange? What if the best skill-sharers are too busy to teach, and only those who need money sign up?",spray:"In open-source software, people contribute for reputation and community, not payment. What if skill-sharing worked like a contribution economy \u2014 you teach one thing, you learn another?",remix:"A time-credit system: teach one hour, earn one hour of learning. No money changes hands. Reputation builds through peer reviews. The university endorses it as co-curricular activity.",piece:"Not a paid tutoring app. A campus skill-exchange commons \u2014 time-credit based, reputation-driven, university-endorsed. Students teach what they know and learn what they need. The exchange is the product."},
+db:{op:"You want to build a skill-sharing platform for students. Before features \u2014 what problem are you actually solving?",ch:[{t:"Students cannot afford professional tutoring",id:1},{t:"Students have skills going to waste",id:2},{t:"Campus communities are disconnected",id:3}],tr:{1:{u:"Students cannot afford professional tutoring",b:"A cost problem. But if cost is the barrier, does peer tutoring solve it or just provide a cheaper, lower-quality version? What makes a peer as good as a professional in some domains?",c:[{t:"Peers understand the student context better",id:4},{t:"Some skills do not need a professional",id:5}]},2:{u:"Students have skills going to waste",b:"An underutilisation problem. Interesting \u2014 your product is not about the learner, it is about the teacher. That reframes everything. What motivates a student to share a skill they are not using?",c:[{t:"Recognition and portfolio building",id:6},{t:"Genuine enjoyment of teaching",id:7}]},3:{u:"Campus communities are disconnected",b:"A social infrastructure problem. Your platform is not really about skills \u2014 it is about connection. Skills are just the mechanism. Does that change your design?",c:[{t:"Yes \u2014 community features matter more than matching",id:8},{t:"Skills are still the core, community is a bonus",id:9}]},4:{u:"Peers understand student context better",b:"True for some things. A third-year accounting student understands exam prep better than a professional accountant. But for technical depth? Where is the line between peer-adequate and peer-inadequate?",c:[]},5:{u:"Some skills do not need a professional",b:"Good distinction. Guitar basics, coding fundamentals, presentation skills \u2014 peers are great. But who decides which skills qualify? And does that create a hierarchy of knowledge?",c:[]},6:{u:"Recognition and portfolio building",b:"Extrinsic motivation. It works initially but fades. What keeps someone teaching after their CV is strong enough? You need intrinsic motivation for sustainability.",c:[]},7:{u:"Genuine enjoyment of teaching",b:"The strongest driver. But how do you design for it? Most platforms optimise for transactions, not joy. What would a platform designed around the teacher\u2019s experience look like?",c:[]},8:{u:"Community features matter more",b:"Now your product looks more like a campus social network than a tutoring platform. Very different competitive landscape. Are you building Meetup or are you building Chegg?",c:[]},9:{u:"Skills are still the core",b:"Then you need to be honest about competing with existing tutoring platforms. What makes yours defensible? University endorsement? Time-credit model? Something else?",c:[]}}},
+eco:[{tl:"IdeaDustbin",wk:"Weeks 1\u20132",cl:"d",tx:"Fragments captured and sealed for incubation.",id:"\u201CSkills going to waste\u201D + \u201Ctime as currency\u201D + \u201Ccampus communities are underutilised\u201D"},{tl:"ICLE Framework",wk:"Weeks 3\u20135",cl:"i",tx:"Composted ideas expanded through lenses.",id:"Through Psychologicle: why students teach for free. Through Ecologicle: integration with campus systems. Through Philosophicle: commons vs marketplace."},{tl:"Graffitive",wk:"Weeks 6\u20138",cl:"g",tx:"Peers challenge assumptions through layered critique.",id:"Tag: \u201CAssumes students will pay peers.\u201D Spray: Open-source contribution model. Remix: Time-credit exchange."},{tl:"MBA Dog Bot",wk:"Throughout",cl:"db",tx:"Socratic questioning deepens reflection at every stage.",id:"\u201CIs this a tutoring platform or a community platform? The answer changes everything about your design.\u201D"},{tl:"Evolved Concept",wk:"Week 9\u201310",cl:"sp",tx:"No longer a paid tutoring app. A university-endorsed skill-exchange commons \u2014 time-credit based, reputation-driven, where teaching and learning are equal acts."}]},
 {t:"A circular economy model for campus food waste",fr:["How much food does a campus canteen waste daily?","Students throw away food they paid for","Composting exists but nobody uses it","Local restaurants face the same problem","What if waste had visible value?","Behavioural nudges in canteen design"],rv:"<h4>Compost reveals a pattern:</h4><p>Your fragments expose a <strong>visibility problem</strong>. Waste is invisible \u2014 students discard food without seeing the impact. The \u201Cwaste had visible value\u201D fragment is key: what if the waste stream became a <em>currency or resource</em> within the campus? Composting exists but fails because it is disconnected from behaviour. The nudge fragment says: intervene at the canteen, not the bin.</p><p style='margin-top:12px;font-size:12px;color:var(--td)'>Incubation surfaced the design challenge: <strong>making waste visible before it becomes waste.</strong></p>",
 ic:{Arithmeticle:{q:["How many kg of food waste does one campus produce weekly?","What is the cost of disposal vs composting infrastructure?","What ratio of food purchased to food consumed?"],x:"800kg/week average, \u00A312,000/year disposal cost, 30% of purchased food unconsumed."},Psychologicle:{q:["Why do students over-order?","What cognitive biases drive food waste?","Does guilt or awareness change behaviour?"],x:"Loss aversion works backwards \u2014 students over-serve fearing they will miss out. Intervene at serving, not at the bin."},Ecologicle:{q:["What systems interact with campus food waste?","How does waste connect to energy, agriculture, supply chains?","What feedback loops could be created?"],x:"Campus waste connects to local farms, energy generation, soil health, procurement. A circular model touches five systems."},Philosophicle:{q:["Is food waste a moral issue or a design issue?","Who bears responsibility?","What values should a university food system embody?"],x:"If a university teaches sustainability but wastes 30% of its food, the institution is the lesson. This is not a service \u2014 it is a statement of values."},Cosmonicle:{q:["How would this work at the scale of all universities?","What does a zero-waste campus look like in 50 years?","Could this model apply to space habitats?"],x:"Campus food systems become prototypes for closed-loop human settlements \u2014 every output is an input."}},
 gs:"Install smart bins on campus that sort food waste and track volumes.",gd:{tag:"Assumes the problem is at the bin. Assumes technology solves behavioural problems. Assumes students will interact with a bin. Assumes tracking changes behaviour.",scratch:"What if smart bins make waste more convenient, not less? What if measuring waste produces data nobody acts on? The bin is the end of the story \u2014 the problem starts at the serving counter.",spray:"In nature there is no waste \u2014 every output is an input. What if the campus food system worked like a forest floor? Uneaten food becomes compost, compost feeds a garden, garden feeds the canteen.",remix:"Merge visibility with the ecological loop. A glass-walled composting station in the courtyard. Students see yesterday\u2019s waste becoming soil. The serving counter shows \u201Ctoday\u2019s ingredients grown from last month\u2019s compost.\u201D",piece:"The idea is no longer smart bins. It is a visible circular food system \u2014 campus garden, glass composting, canteen integration, and a curriculum module where students design the loop. Technology serves visibility, not measurement."},
@@ -304,43 +337,43 @@ dots.forEach(function(d){d.addEventListener("click",function(){document.getEleme
 var PS=0,pStep=0;
 var PD=[
 {
-  t:"Mental health app for university students",
+  t:"Peer-to-peer skill-sharing platform for students",
   dustbin:{
-    frags:["Why do students avoid therapy?","Subscription fatigue is real","What if the app made you wait?","University duty of care","Peer support vs professional help"],
-    ai_themes:"AI surfaces three clusters: <strong>access barriers</strong> (stigma, cost, awareness), <strong>engagement paradox</strong> (subscription models push constant use but wellbeing needs space), and <strong>institutional responsibility</strong> (duty of care vs commercial model).",
-    output:"Composted insight: The tension between access and intentionality. Students need help, but the delivery model matters as much as the service."
+    frags:["Students have skills they never use in class","Time is the real currency at university","How do you trust a stranger to teach you?","Campus communities are underutilised","Freelance platforms feel transactional"],
+    ai_themes:"AI surfaces two clusters: <strong>underutilised knowledge</strong> (students possess diverse skills with no mechanism to share them) and <strong>exchange design</strong> (monetary models feel transactional but free models lack commitment).",
+    output:"Composted insight: The tension between marketplace and commons. Students want to exchange skills, but the format of exchange determines whether this builds community or just creates cheap tutoring."
   },
   icle:{
     lenses:["Psychologicle","Ecologicle","Philosophicle"],
-    questions:["Why do students resist seeking help even when it is free?","What happens to existing counselling if this app succeeds?","Whose responsibility is student mental health \u2014 the student, the university, or society?"],
-    evolution:"The idea moves from \u201Ca chatbot product\u201D to \u201Ca wellbeing infrastructure question.\u201D ICLE Complexity: from Seed to Meaningful (ICLE-4).",
-    output:"Expanded concept: Not an app but an institutional wellbeing system. The pricing model is an ethical question, not just a business one."
+    questions:["Why would a student teach for free when they could charge?","What campus systems would this interact with or displace?","Should knowledge exchange be monetised or kept as a commons?"],
+    evolution:"The idea moves from \u201Ca tutoring marketplace\u201D to \u201Ca campus knowledge commons.\u201D ICLE Complexity: from Seed to Meaningful (ICLE-4).",
+    output:"Expanded concept: Not a paid platform but a time-credit exchange. Teaching and learning become equal acts. The university endorses it as co-curricular development."
   },
   graffitive:{
-    seed:"Students pay \u00A39.99/month for a mental health chatbot.",
+    seed:"Students pay \u00A35/hour to book peer tutoring sessions through an app.",
     solo:[
-      {can:"Tag",color:"#ffb450",bg:"rgba(255,180,80,.1)",text:"Assumes students want a chatbot. Assumes \u00A39.99 is affordable. Assumes mental health fits a subscription model."},
-      {can:"Scratch",color:"#ff6464",bg:"rgba(255,100,100,.1)",text:"What if the chatbot makes loneliness worse? What if subscriptions create guilt during financial stress \u2014 exactly when help is most needed?"},
-      {can:"Spray",color:"#64b4ff",bg:"rgba(100,180,255,.1)",text:"Community gardens do not charge subscriptions. What if support worked like a commons? Free, collective, with peer tending."},
-      {can:"Remix",color:"#b478ff",bg:"rgba(180,120,255,.1)",text:"University-funded wellbeing commons + peer support layers + professional escalation pathways. Not an app \u2014 infrastructure."},
-      {can:"Piece",color:"#78ffb4",bg:"rgba(120,255,180,.1)",text:"A university-embedded wellbeing commons. Free, peer-facilitated, with deliberate friction and earned professional access."}
+      {can:"Tag",color:"#ffb450",bg:"rgba(255,180,80,.1)",text:"Assumes students will pay peers. Assumes one-to-one sessions are the format. Assumes an app is the right interface."},
+      {can:"Scratch",color:"#ff6464",bg:"rgba(255,100,100,.1)",text:"Paying peers makes it feel like discount tutoring. The best skill-sharers are too busy to monetise their time. Money kills the generosity."},
+      {can:"Spray",color:"#64b4ff",bg:"rgba(100,180,255,.1)",text:"In open-source communities, people contribute for reputation and belonging, not payment. What if skill-sharing worked as a contribution economy?"},
+      {can:"Remix",color:"#b478ff",bg:"rgba(180,120,255,.1)",text:"Time-credit system: teach one hour, earn one hour. No money. Peer reviews build reputation. University endorses it as co-curricular activity."},
+      {can:"Piece",color:"#78ffb4",bg:"rgba(120,255,180,.1)",text:"A campus skill-exchange commons \u2014 time-credit based, reputation-driven, university-endorsed. Teaching and learning are equal acts."}
     ],
     peer:[
-      {who:"Student A",color:"#ffb450",bg:"rgba(255,180,80,.08)",text:"Tags: Assumes students trust a chatbot with vulnerable feelings. Assumes technology can handle crisis situations safely."},
-      {who:"Student B",color:"#ff6464",bg:"rgba(255,100,100,.08)",text:"Scratches over A: Chatbots CANNOT handle crisis. This is dangerous. What happens when someone is suicidal and the bot gives a generic response?"},
-      {who:"Student C",color:"#64b4ff",bg:"rgba(100,180,255,.08)",text:"Sprays new perspective: In crisis hotlines, the first responder is often a trained volunteer, not a professional. What if the app connected to peer supporters with AI-assisted triage?"},
-      {who:"Student A",color:"#b478ff",bg:"rgba(180,120,255,.08)",text:"Remixes B + C: AI handles triage and routing. Trained peers handle first contact. Professionals handle escalation. The app is the coordination layer, not the therapist."},
-      {who:"All three",color:"#78ffb4",bg:"rgba(120,255,180,.08)",text:"Piece: A multi-layer support system where AI coordinates, peers connect, and professionals intervene. No single point of failure. The critique made it safer."}
+      {who:"Student A",color:"#ffb450",bg:"rgba(255,180,80,.08)",text:"Tags: Assumes students have time to teach. MBA students are already overloaded. Who teaches during exam season?"},
+      {who:"Student B",color:"#ff6464",bg:"rgba(255,100,100,.08)",text:"Scratches: And quality control? What stops someone teaching badly just to earn credits? A bad coding lesson wastes two people\u2019s time."},
+      {who:"Student C",color:"#64b4ff",bg:"rgba(100,180,255,.08)",text:"Sprays: What about group sessions? One person teaches five \u2014 earns more credits, learners pay less. Like a micro-workshop. More efficient and more social."},
+      {who:"Student A",color:"#b478ff",bg:"rgba(180,120,255,.08)",text:"Remixes B + C: Group micro-workshops + peer ratings after each session. Quality self-regulates through reputation. Top-rated teachers get featured."},
+      {who:"All three",color:"#78ffb4",bg:"rgba(120,255,180,.08)",text:"Piece: A micro-workshop platform with time-credits, peer ratings, and group sessions. Quality is community-governed. The critique prevented a low-quality one-to-one matching problem."}
     ],
-    output:"Graffitive output: The original chatbot idea was challenged into a layered support ecosystem. Peer trespass caught a safety flaw and fixed it."
+    output:"Graffitive output: Peer trespass caught quality and time problems. The group micro-workshop format solves both efficiency and social connection."
   },
   dogbot:{
     exchange:[
-      {role:"bot",text:"I can see your idea has been through IdeaDustbin, ICLE, and Graffitive. You started with a chatbot and ended with a wellbeing commons. Let me ask: what changed your mind about the subscription model?"},
-      {role:"user",text:"The Philosophicle lens made me realise that monetising wellbeing for students universities have a duty to protect felt wrong."},
-      {role:"bot",text:"Good. But universities have limited budgets. If you are asking them to fund this as infrastructure, what makes your system more compelling than hiring another counsellor?"},
-      {role:"user",text:"Scale. One counsellor helps 50 students. This system with peer layers and AI triage could support thousands."},
-      {role:"bot",text:"That is the argument. But Graffitive surfaced a critical point: the chatbot alone is dangerous for crisis situations. Your peer layer solves that, but who trains the peers? What quality control exists? You have shifted from a technology problem to a human systems problem. Is that where you want to be?"}
+      {role:"bot",text:"Your idea has been through IdeaDustbin, ICLE, and Graffitive. You started with paid peer tutoring and ended with a time-credit micro-workshop commons. What was the turning point?"},
+      {role:"user",text:"The Philosophicle lens made me realise that monetising peer knowledge turns community into a marketplace. The commons model felt more authentic."},
+      {role:"bot",text:"Good. But commons models have a sustainability problem. If nobody pays, who maintains the platform? Who moderates? University endorsement helps, but universities move slowly. What keeps this running between semesters?"},
+      {role:"user",text:"Maybe the university funds it as part of student experience, like they fund societies."},
+      {role:"bot",text:"That is the argument. But Graffitive surfaced a quality concern: what stops bad teaching? Your peer rating system helps, but ratings can be gamed or biased. You have shifted from a technology problem to a governance problem. How do you design governance for a student-run knowledge commons?"}
     ]
   }
 },
@@ -507,7 +540,141 @@ var PD=[
       {role:"bot",text:"Now you are blending commercial and civic revenue. That is powerful but complex. Your Anthropologicle lens flagged that small businesses represent community identity. If that is true, local councils have an incentive to fund this. But council procurement is slow and bureaucratic. Can your platform survive the 18-month sales cycle to land the first council contract?"}
     ]
   }
+},
+{
+  t:"Micro-lending platform for student startups",
+  dustbin:{
+    frags:["Students have ideas but no capital","Banks will not lend to students","What if peers invested in each other?","Most student startups fail within a year","Emotional attachment to your own money"],
+    ai_themes:"AI surfaces a <strong>trust-risk tension</strong>. Students want to support each other, but lending money to friends creates social awkwardness when ventures fail. The financial product and the social relationship are in conflict.",
+    output:"Composted insight: The real problem is not funding \u2014 it is validation. Students need signal that their idea is worth pursuing before they need capital."
+  },
+  icle:{
+    lenses:["Psychologicle","Ecologicle","Algorithmicle"],
+    questions:["What happens to a friendship when a loan defaults?","How does student lending interact with existing university enterprise support?","What rules determine who gets funded and who does not?"],
+    evolution:"The idea moves from \u201Cpeer lending app\u201D to \u201Cstaged validation fund.\u201D ICLE Complexity: Seed to Living (ICLE-3).",
+    output:"Expanded concept: Invest time before money. Peer review filters ideas, stages unlock progressively, university provides matched funding."
+  },
+  graffitive:{
+    seed:"Students lend \u00A350\u2013\u00A3500 to each other\u2019s startup ideas through an app at 5% interest.",
+    solo:[
+      {can:"Tag",color:"#ffb450",bg:"rgba(255,180,80,.1)",text:"Assumes students have \u00A350\u2013\u00A3500 spare. Assumes 5% interest motivates lending. Assumes an app solves trust. Assumes students can assess business risk."},
+      {can:"Scratch",color:"#ff6464",bg:"rgba(255,100,100,.1)",text:"What happens when your flatmate\u2019s startup fails and they owe you \u00A3300? Peer lending destroys relationships. And 5% on \u00A3500 is \u00A325 \u2014 nobody lends for that."},
+      {can:"Spray",color:"#64b4ff",bg:"rgba(100,180,255,.1)",text:"In accelerators, cohort feedback matters more than money. What if students invested attention and critique before anyone invested cash?"},
+      {can:"Remix",color:"#b478ff",bg:"rgba(180,120,255,.1)",text:"Stage 1: peer review. Stage 2: time investment via mentoring hours. Stage 3: micro-funding from a university-matched pool. Money is the last step, not the first."},
+      {can:"Piece",color:"#78ffb4",bg:"rgba(120,255,180,.1)",text:"Not peer lending. A staged validation fund: peer critique, then time commitment, then matched funding. Money follows proof of concept."}
+    ],
+    peer:[
+      {who:"Student A",color:"#ffb450",bg:"rgba(255,180,80,.08)",text:"Tags: This is just a worse version of crowdfunding. Kickstarter exists. Why build a campus version with smaller amounts?"},
+      {who:"Student B",color:"#ff6464",bg:"rgba(255,100,100,.08)",text:"Scratches: Worse than that \u2014 it creates debt between friends. At least on Kickstarter you do not see your funder in the library every day."},
+      {who:"Student C",color:"#64b4ff",bg:"rgba(100,180,255,.08)",text:"Sprays: What about investment circles? Groups of 8 pool \u00A320/month, pitch to each other, group decides allocation. Social accountability replaces contracts."},
+      {who:"Student A",color:"#b478ff",bg:"rgba(180,120,255,.08)",text:"Remixes B + C: Investment circles with university matching. Each \u00A31 from the circle unlocks \u00A32 from a university innovation fund. Groups self-select, accountability is social."},
+      {who:"All three",color:"#78ffb4",bg:"rgba(120,255,180,.08)",text:"Piece: Student investment circles with matched university funding and staged validation. Social accountability, shared risk, institutional support. Not lending \u2014 collective venture building."}
+    ],
+    output:"Peer trespass killed the peer-lending model by exposing social risk. The investment circle preserved community while removing debt between friends."
+  },
+  dogbot:{
+    exchange:[
+      {role:"bot",text:"Your idea evolved from peer lending to investment circles with matched funding. Social risk solved \u2014 but now you depend on university funding. What if they pull it?"},
+      {role:"user",text:"The circles could still function without matching \u2014 just smaller amounts."},
+      {role:"bot",text:"Good resilience test. But would students stay motivated pooling \u00A320/month without the multiplier? Your Psychologicle lens matters \u2014 is the motivation intrinsic or driven by the matched incentive?"},
+      {role:"user",text:"Probably a bit of both. The community aspect helps."},
+      {role:"bot",text:"Then your real product is the circle \u2014 the community formation and facilitation \u2014 not the funding mechanism. The money gets people in the room. The value is what happens in the room. That changes your pitch to universities entirely."}
+    ]
+  }
+},
+{
+  t:"Community-owned last-mile delivery cooperative",
+  dustbin:{
+    frags:["Local shops cannot compete with Amazon delivery","Gig workers have no protections","Neighbourhoods have unused delivery capacity","What if delivery was a community service, not a gig?","Dark stores are replacing local businesses"],
+    ai_themes:"AI identifies a <strong>value extraction problem</strong>. Gig platforms take 30% commission from local businesses and offer no job security. The community generates value but the platform captures it.",
+    output:"Composted insight: The delivery problem is really an ownership problem. Who captures the value created by local economic activity?"
+  },
+  icle:{
+    lenses:["Ecologicle","Philosophicle","Anthropologicle"],
+    questions:["What happens to local economies when delivery infrastructure is owned by distant corporations?","Who should profit from connecting neighbours to local shops?","How do different communities define \u2018local\u2019 and belonging?"],
+    evolution:"The idea moves from \u201Ca delivery app\u201D to \u201Ca community ownership question.\u201D ICLE Complexity: Seed to Living (ICLE-3).",
+    output:"Expanded concept: A delivery cooperative owned by the community it serves. Fair pay, transparent pricing, local reinvestment."
+  },
+  graffitive:{
+    seed:"A gig economy app where local residents deliver for neighbourhood businesses, taking 20% commission.",
+    solo:[
+      {can:"Tag",color:"#ffb450",bg:"rgba(255,180,80,.1)",text:"Assumes residents want gig work. Assumes 20% is competitive. Assumes technology is the barrier. Assumes another app is the answer."},
+      {can:"Scratch",color:"#ff6464",bg:"rgba(255,100,100,.1)",text:"This is Deliveroo but smaller. Same exploitation at smaller scale. How do you compete with venture-backed platforms that deliberately lose money to capture markets?"},
+      {can:"Spray",color:"#64b4ff",bg:"rgba(100,180,255,.1)",text:"Housing cooperatives and credit unions have operated for over a century. What if delivery infrastructure was a cooperative \u2014 owned by drivers and local shops together?"},
+      {can:"Remix",color:"#b478ff",bg:"rgba(180,120,255,.1)",text:"Cooperative model: shops and drivers are co-owners. Commission is 8% (cost only). Profits reinvested locally. Council backing for community infrastructure status."},
+      {can:"Piece",color:"#78ffb4",bg:"rgba(120,255,180,.1)",text:"A delivery cooperative. Shops and drivers co-own the platform. Minimal commission, fair pay floors, community governance. Not competing \u2014 building an alternative."}
+    ],
+    peer:[
+      {who:"Student A",color:"#ffb450",bg:"rgba(255,180,80,.08)",text:"Tags: Cooperatives are slow, underfunded, and cannot build good tech. The app will be terrible compared to Uber Eats."},
+      {who:"Student B",color:"#ff6464",bg:"rgba(255,100,100,.08)",text:"Scratches: And who manages a cooperative? Local shop owners work 14-hour days. Adding governance meetings is not empowerment, it is burden."},
+      {who:"Student C",color:"#64b4ff",bg:"rgba(100,180,255,.08)",text:"Sprays: What about a hybrid? A social enterprise builds and maintains the tech, cooperatives own local operations. Like a franchise but community-owned at each node."},
+      {who:"Student B",color:"#b478ff",bg:"rgba(180,120,255,.08)",text:"Remixes A + C: Central tech team (social enterprise) + local cooperative nodes. Each neighbourhood adapts to local needs. Good technology, community ownership, manageable governance."},
+      {who:"All three",color:"#78ffb4",bg:"rgba(120,255,180,.08)",text:"Piece: A federated delivery network \u2014 social enterprise builds the platform, local cooperatives own operations. Technology shared, governance local. Critique made it structurally viable."}
+    ],
+    output:"Peer trespass exposed governance and technology problems of pure cooperatives. The federated model solves both while keeping community ownership."
+  },
+  dogbot:{
+    exchange:[
+      {role:"bot",text:"Your federated model splits technology from operations. Smart. But the social enterprise at the centre controls the platform. How do you prevent the centre becoming what you set out to replace?"},
+      {role:"user",text:"Cooperative governance of the social enterprise too \u2014 each local node gets a vote."},
+      {role:"bot",text:"Democratic infrastructure. But what happens when nodes disagree? A wealthy suburb wants premium features; a lower-income neighbourhood wants lowest commission. Same platform cannot optimise for both."},
+      {role:"user",text:"Maybe the platform is modular \u2014 each node configures pricing and features locally."},
+      {role:"bot",text:"Now you are designing for divergence, not uniformity. Your Ecologicle lens was right \u2014 this is an ecosystem, not a product. But that makes your brand story harder. What is the unifying identity that holds a federated network together?"}
+    ]
+  }
+},
+{
+  t:"Platform for preserving traditional craft knowledge",
+  dustbin:{
+    frags:["Master weavers are dying with their knowledge","Etsy sells crafts but not the knowledge behind them","YouTube tutorials flatten complex techniques","Apprenticeship takes years but there are no apprentices","Museums preserve objects but not the process"],
+    ai_themes:"AI surfaces a <strong>preservation paradox</strong>. Digitising craft knowledge makes it accessible but risks decontextualising it. The knowledge is not just technique \u2014 it is relationship, material understanding, and cultural meaning.",
+    output:"Composted insight: The problem is not documentation \u2014 it is transmission. Crafts survive through relationships between masters and apprentices, not content platforms."
+  },
+  icle:{
+    lenses:["Anthropologicle","Symbolicle","Philosophicle"],
+    questions:["What happens to cultural identity when craft knowledge disappears?","What does a traditional textile represent beyond its material form?","Who has the right to decide how indigenous knowledge is shared?"],
+    evolution:"The idea moves from \u201Conline craft marketplace\u201D to \u201Ccommunity-governed cultural preservation.\u201D ICLE Complexity: Seed to Meaningful (ICLE-4).",
+    output:"Expanded concept: Not a marketplace but a living archive \u2014 community-controlled, with apprenticeship pathways and cultural governance."
+  },
+  graffitive:{
+    seed:"An online marketplace selling traditional crafts from indigenous artisans at premium prices, with video tutorials.",
+    solo:[
+      {can:"Tag",color:"#ffb450",bg:"rgba(255,180,80,.1)",text:"Assumes artisans want to sell online. Assumes premium pricing is sustainable. Assumes video captures craft knowledge. Assumes a marketplace preserves anything."},
+      {can:"Scratch",color:"#ff6464",bg:"rgba(255,100,100,.1)",text:"Marketplaces commodify. Once the technique is in a video, anyone copies it. The artisan loses competitive advantage AND cultural authority. This accelerates loss."},
+      {can:"Spray",color:"#64b4ff",bg:"rgba(100,180,255,.1)",text:"In oral traditions, knowledge is transmitted through relationship, not content. What if the platform connected masters with apprentices rather than products with buyers?"},
+      {can:"Remix",color:"#b478ff",bg:"rgba(180,120,255,.1)",text:"A dual model: marketplace funds apprenticeship programmes. Purchases support living artisans. Knowledge transmitted through guided relationships, not open tutorials."},
+      {can:"Piece",color:"#78ffb4",bg:"rgba(120,255,180,.1)",text:"A living craft institution: marketplace funds apprenticeships, knowledge stays community-governed, digital archive is access-controlled by artisan communities."}
+    ],
+    peer:[
+      {who:"Student A",color:"#ffb450",bg:"rgba(255,180,80,.08)",text:"Tags: This is digital colonialism dressed as preservation. A tech platform deciding how indigenous knowledge is stored repeats the pattern that caused the loss."},
+      {who:"Student B",color:"#ff6464",bg:"rgba(255,100,100,.08)",text:"Scratches: And \u2018premium pricing\u2019 means wealthy Western consumers buying exotic objects. The artisan gets a fraction. This is fair trade theatre."},
+      {who:"Student C",color:"#64b4ff",bg:"rgba(100,180,255,.08)",text:"Sprays: What if communities owned the platform entirely? Technology built to their specification, data sovereignty guaranteed, revenue model designed by artisans themselves."},
+      {who:"Student A",color:"#b478ff",bg:"rgba(180,120,255,.08)",text:"Remixes B + C: Community-owned platform, artisan governance council, revenue stays within community. Tech team works FOR the community, not the other way around."},
+      {who:"All three",color:"#78ffb4",bg:"rgba(120,255,180,.08)",text:"Piece: Community-sovereign craft institution. Artisans govern the platform, control access to knowledge, own their data, design their revenue model. Technology is a tool, not the owner."}
+    ],
+    output:"Peer trespass exposed colonial extraction patterns. Community sovereignty became the non-negotiable design principle."
+  },
+  dogbot:{
+    exchange:[
+      {role:"bot",text:"Your idea evolved from marketplace to community-sovereign institution. Graffitive raised a colonialism concern that changed the power structure. But who builds the technology if the community lacks developers?"},
+      {role:"user",text:"Partner with a social enterprise or university that builds to the community\u2019s specification."},
+      {role:"bot",text:"Good \u2014 but specifications require translation. The community knows what to preserve. The developer knows what technology can do. Between those is a translation gap where power asymmetry hides. Who mediates?"},
+      {role:"user",text:"The marketplace revenue could fund ongoing development."},
+      {role:"bot",text:"Now you need commercial success to fund the preservation mission. But your Philosophicle lens asked who decides how knowledge is shared. If commercial pressure drives listing decisions, the market shapes the culture. That tension does not resolve \u2014 it must be governed."}
+    ]
+  }
 }
+];
+
+var evoData=[
+{t:["A paid peer tutoring app where students book one-to-one lessons.","Not just tutoring \u2014 a question of community, identity, and what motivates students to share knowledge freely.","A time-credit micro-workshop platform with peer ratings and group sessions. Quality is community-governed.","A university-endorsed skill-exchange commons \u2014 time-credit based, reputation-driven. Designed around the teacher\u2019s experience, not just the learner\u2019s."],l:["Seed \u00b7 ICLE-1","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4"],c:["s1","s4","s4","s4"]},
+{t:["Smart bins that sort food waste and track volumes on campus.","A visible ecological loop \u2014 connecting food waste to energy, agriculture, and procurement.","A living campus food system \u2014 garden, glass composting, canteen integration. Technology serves visibility.","A curriculum-integrated circular food system. Academic budget, not facilities. The campus becomes the lesson."],l:["Seed \u00b7 ICLE-1","Living \u00b7 ICLE-3","Living \u00b7 ICLE-3","Meaningful \u00b7 ICLE-4"],c:["s1","s3","s3","s4"]},
+{t:["An AI chatbot providing personalised maths tutoring for \u00A32/month.","Technology should empower local human tutors, not replace them. A community capacity question.","AI creates content, low-tech distributes it, local facilitators lead learning. No internet dependency.","A community-owned learning network. Federated AI, local governance, human relationships at the centre."],l:["Seed \u00b7 ICLE-1","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4","Cosmicle \u00b7 ICLE-5"],c:["s1","s4","s4","s4"]},
+{t:["A D2C sustainable clothing brand, 30% cheaper than competitors.","A cultural identity play \u2014 sell desirability, not sustainability. Make the brand so desirable sustainability is a bonus.","A dual-model brand \u2014 premium drops fund a trade-in programme. Cool at the top, inclusive at the base.","A commitment-driven platform \u2014 first drop includes future trade-in credits. Packaging communicates values."],l:["Seed \u00b7 ICLE-1","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4"],c:["s1","s4","s4","s4"]},
+{t:["An online marketplace where retiring owners list businesses for acquisition.","Not a listing platform but community succession \u2014 matching, mentoring, knowledge transfer, continuity.","A values-first succession programme \u2014 earn-in apprenticeship, performance-based pricing, community co-investment.","A blended commercial-civic model \u2014 platform fees plus council grants. Community development logic meets enterprise."],l:["Seed \u00b7 ICLE-1","Living \u00b7 ICLE-3","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4"],c:["s1","s3","s4","s4"]},
+{t:["Students lend \u00A350\u2013\u00A3500 to each other\u2019s startup ideas at 5% interest.","Peer lending is a trust-risk trap. Invest time and attention before money. Validation matters more than capital.","Student investment circles with matched university funding and staged validation gates. Shared risk.","The circle is the product, not the funding. Money gets people in the room. Value happens in the room."],l:["Seed \u00b7 ICLE-1","Structural \u00b7 ICLE-2","Living \u00b7 ICLE-3","Meaningful \u00b7 ICLE-4"],c:["s1","s2","s3","s4"]},
+{t:["A gig economy app where local residents deliver for neighbourhood businesses.","Gig platforms extract value from communities. The delivery problem is really an ownership problem.","A federated delivery network \u2014 social enterprise builds the tech, local cooperatives own operations.","An ecosystem designed for local adaptation. Each node configures for its community. Divergence by design."],l:["Seed \u00b7 ICLE-1","Structural \u00b7 ICLE-2","Living \u00b7 ICLE-3","Meaningful \u00b7 ICLE-4"],c:["s1","s2","s3","s4"]},
+{t:["An online marketplace selling traditional crafts with video tutorials.","The problem is transmission, not documentation. Crafts survive through relationships, not content platforms.","A living craft institution \u2014 marketplace funds apprenticeships, archive is community-governed.","Community-sovereign preservation. Artisans govern, own data, design revenue. The market-vs-culture tension must be governed, not resolved."],l:["Seed \u00b7 ICLE-1","Meaningful \u00b7 ICLE-4","Meaningful \u00b7 ICLE-4","Cosmicle \u00b7 ICLE-5"],c:["s1","s4","s4","s4"]}
 ];
 
 // ============================================================
@@ -520,14 +687,30 @@ function rPScens(){
   PD.forEach(function(s,i){
     var b=document.createElement("button");
     b.className="pb"+(i===PS?" active":"");
-    b.innerHTML='<div class="pbl">Scenario '+"ABCDE"[i]+"</div>"+s.t;
+    b.innerHTML='<div class="pbl">Scenario '+"ABCDEFGH"[i]+"</div>"+s.t;
     b.onclick=function(){PS=i;pStep=0;rPScens();rPStep()};
     ct.appendChild(b);
   });
 }
+function updatePipe(){
+  for(var i=0;i<4;i++){
+    var dot=document.getElementById("pp"+i);
+    var lbl=document.getElementById("pl"+i);
+    if(dot){dot.className="pipe-dot"+(i===pStep?" lit":(i<pStep?" done":""))}
+    if(lbl){lbl.className="pipe-lbl"+(i===pStep?" lit":(i<pStep?" done":""))}
+    if(i<3){var ln=document.getElementById("pL"+i);if(ln){ln.className="pipe-line"+(i<pStep?" done":"")}}
+  }
+}
+function updateEvo(){
+  var ed=evoData[PS];if(!ed)return;
+  var et=document.getElementById("evoText");
+  var eb=document.getElementById("evoBadge");
+  if(et){et.innerHTML=ed.t[pStep];et.style.animation="none";et.offsetHeight;et.style.animation="fu .4s ease"}
+  if(eb){eb.textContent=ed.l[pStep];eb.className="evo-badge "+ed.c[pStep]}
+}
 function goStep(n){pStep=n;rPStep()}
 function rPStep(){
-  document.querySelectorAll(".stb").forEach(function(b,i){b.className="stb"+(i===pStep?" act":(i<pStep?" done":""))});
+  updatePipe();updateEvo();
   var d=PD[PS],ct=document.getElementById("pContent"),h="";
   if(pStep===0){
     h='<div class="pcard"><h4 style="color:var(--dg)">Digital IdeaDustbin \u2014 AI-Enhanced Incubation</h4>';
@@ -570,7 +753,7 @@ function rPStep(){
     h+='<div style="background:var(--bg-el);border-radius:var(--r);padding:20px;border:1px solid rgba(74,111,165,.12)">';
     d.dogbot.exchange.forEach(function(m){
       if(m.role==="bot"){
-        h+='<div style="max-width:85%;padding:12px 16px;background:rgba(74,111,165,.12);border:1px solid rgba(74,111,165,.15);border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6;color:var(--t)"><span style="font-size:11px;color:var(--dbg);font-weight:500">🐕 Dog Bot:</span><br>'+m.text+"</div>";
+        h+='<div style="max-width:85%;padding:12px 16px;background:rgba(74,111,165,.12);border:1px solid rgba(74,111,165,.15);border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6;color:var(--t)"><span style="font-size:11px;color:var(--dbg);font-weight:500">\ud83d\udc15 Dog Bot:</span><br>'+m.text+"</div>";
       } else {
         h+='<div style="max-width:85%;padding:12px 16px;background:rgba(74,111,165,.2);border-radius:12px;margin-bottom:12px;font-size:13px;line-height:1.6;color:var(--tw);margin-left:auto"><span style="font-size:11px;color:var(--td);font-weight:500">Student:</span><br>'+m.text+"</div>";
       }
