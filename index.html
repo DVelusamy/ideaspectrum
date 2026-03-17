@@ -37,6 +37,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .tn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
 .th h2{font-family:'Instrument Serif',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;color:var(--tw);margin-bottom:8px}
 .th .su{font-size:1.05rem;color:var(--td)}
+.th-row{display:flex;align-items:center;gap:16px}
+.th-mascot{max-width:80px;height:auto;border-radius:8px;flex-shrink:0}
 .td{font-size:1rem;color:var(--t);max-width:640px;margin-bottom:40px;line-height:1.75}
 .td strong{color:var(--tw);font-weight:500}
 .tb{background:var(--bg-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--rl);padding:40px;position:relative;overflow:hidden}
@@ -121,7 +123,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .img-icon{max-width:120px;border-radius:var(--r);opacity:.88;float:right;margin:0 0 16px 16px;border:1px solid rgba(255,255,255,.06)}
 .img-logo{display:block;max-width:180px;margin:0 auto 24px;opacity:.95}
 .hero-bg-accent{position:absolute;top:0;right:0;width:40%;max-width:400px;height:100%;object-fit:cover;opacity:.08;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent)}
-@media(max-width:768px){.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
+@media(max-width:768px){.th-mascot{max-width:60px}.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
 
 /* PLATFORM SECTION */
 .po{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
@@ -229,7 +231,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div>
 
 <section class="ts" id="dustbin"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--dg)">Method 01</div><h2><img src="images/bin5.png" alt="IdeaDustbin" class="img-icon">IdeaDustbin</h2><div class="su">Structured incubation for innovation thinking</div></div>
+<div class="th"><div class="tn" style="color:var(--dg)">Method 01</div><div class="th-row"><img src="images/bin5.png" alt="IdeaDustbin" class="th-mascot"><h2>IdeaDustbin</h2></div><div class="su">Structured incubation for innovation thinking</div></div>
 <div class="td">Great ideas rarely arrive fully formed. IdeaDustbin introduces <strong>deliberate incubation</strong> &mdash; a structured pause where fragments of thinking are deposited, sealed, and revisited later. The composting metaphor: unfinished thoughts become the substrate for stronger ideas. <strong>No AI required.</strong></div>
 <div class="tb" style="border-color:rgba(74,124,89,.12)">
 <div class="tl" style="background:rgba(74,124,89,.15);color:var(--dg)">Try It &mdash; Drop fragments into the compost</div>
@@ -259,7 +261,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div></section>
 
 <section class="ts" id="graffitive"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><h2><img src="images/Transparent.png" alt="Graffitive Mascot" class="img-mascot">Graffitive</h2><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
+<div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><div class="th-row"><img src="images/Transparent.png" alt="Graffitive Mascot" class="th-mascot"><h2>Graffitive</h2></div><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
 <div class="td">Graffitive helps students stress-test ideas through <strong>productive conflict</strong>. Students write directly over each other&rsquo;s ideas using five Spray Cans. The result is a layered palimpsest &mdash; a visible record of how ideas evolve through challenge. <strong>Graffitive turns critique into a creative act.</strong></div>
 <img src="images/graf2.jpg" alt="Graffitive" class="img-full">
 <div class="tb" style="border-color:rgba(181,70,94,.1)">
@@ -279,7 +281,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 </div></section>
 
 <section class="ts" id="dogbot"><div class="ctn">
-<div class="th"><div class="tn" style="color:var(--dbg)">Method 04</div><h2><img src="images/Scifi7.jpg" alt="Dog Bot" class="img-mascot" style="max-width:100px">Socratic AI Companion</h2><div class="su">MBA Dog Bot &mdash; AI that asks questions before giving answers</div></div>
+<div class="th"><div class="tn" style="color:var(--dbg)">Method 04</div><div class="th-row"><img src="images/Scifi7.jpg" alt="Dog Bot" class="th-mascot"><h2>Socratic AI Companion</h2></div><div class="su">MBA Dog Bot &mdash; AI that asks questions before giving answers</div></div>
 <div class="td">MBA Dog Bot helps students think more carefully with AI rather than just getting answers from it. It operates in <strong>Socratic mode by default</strong>, prompting students to clarify assumptions, explore implications, and connect ideas. Faculty control what the AI can reference. <strong>AI as thinking partner, not shortcut.</strong></div>
 <div class="tb" style="border-color:rgba(74,111,165,.1)">
 <div class="tl" style="background:rgba(74,111,165,.12);color:var(--dbg)">Try It &mdash; A Socratic conversation about your idea</div>
