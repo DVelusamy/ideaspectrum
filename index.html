@@ -39,6 +39,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .th .su{font-size:1.05rem;color:var(--td)}
 .th-row{display:flex;align-items:center;gap:16px}
 .th-mascot{max-width:80px;height:auto;border-radius:8px;flex-shrink:0}
+.iu-tree{position:relative;width:100%;max-width:680px;margin:32px auto 0;font-family:'DM Sans',sans-serif}
+.iu-tree-t{text-align:center;font-family:'Instrument Serif',serif;font-size:1.2rem;color:#fff;font-weight:400;margin-bottom:4px}
+.iu-tree-s{text-align:center;font-size:11px;color:#8a8880;letter-spacing:1px;margin-bottom:16px}
+.iu-tree-c{position:relative;width:100%;aspect-ratio:10/14;min-height:480px}
+.iu-tree-sv{width:100%;height:100%}
+.tnd{cursor:pointer;transition:transform 0.25s}
+.tnd:hover{transform:scale(1.14)}
+.tnd:hover .tnd-o{stroke-width:2.5;stroke-opacity:1}
+.tnd:hover .tnd-glow{r:28;opacity:0.12}
+.tnd-o{transition:all 0.25s}
+.tnd-glow{transition:all 0.4s}
+.tnd-tip{position:absolute;background:#12121a;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 18px;pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:20;width:220px;font-family:'DM Sans',sans-serif}
+.tnd-tip.on{opacity:1}
+.tnd-tip-n{font-family:'Instrument Serif',serif;font-size:16px;color:#fff;margin-bottom:2px}
+.tnd-tip-d{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.tnd-tip-q{font-size:11px;color:#c2c0b6;line-height:1.5;font-style:italic}
+.iu-tree-lg{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:10px}
+.iu-tree-li{display:flex;align-items:center;gap:5px;color:#8a8880}
+.iu-tree-ld{width:7px;height:7px;border-radius:50%}
 .td{font-size:1rem;color:var(--t);max-width:640px;margin-bottom:40px;line-height:1.75}
 .td strong{color:var(--tw);font-weight:500}
 .tb{background:var(--bg-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--rl);padding:40px;position:relative;overflow:hidden}
@@ -123,7 +142,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .img-icon{max-width:120px;border-radius:var(--r);opacity:.88;float:right;margin:0 0 16px 16px;border:1px solid rgba(255,255,255,.06)}
 .img-logo{display:block;max-width:180px;margin:0 auto 24px;opacity:.95}
 .hero-bg-accent{position:absolute;top:0;right:0;width:40%;max-width:400px;height:100%;object-fit:cover;opacity:.08;pointer-events:none;mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent);-webkit-mask-image:linear-gradient(to left,rgba(0,0,0,.4),transparent)}
-@media(max-width:768px){.th-mascot{max-width:60px}.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
+@media(max-width:768px){.iu-tree-c{min-height:380px}.th-mascot{max-width:60px}.img-icon{float:none;display:block;margin:0 auto 16px}.hero-bg-accent{display:none}.hero-logo-img{max-width:260px}.ctn{padding:0 16px}.tb{padding:24px}.lg{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.scs{gap:6px}.scan{padding:8px 14px;font-size:12px}.nd{display:none}.so{flex-direction:column;align-items:center}.sc-btn{min-width:unset;width:100%;max-width:400px}.po{flex-direction:column}.pb{min-width:unset;width:100%}.stp{flex-direction:column;gap:4px}.stb{flex:unset}.pgrid{grid-template-columns:repeat(2,1fr);gap:6px}.pgrid .pb{font-size:11px;padding:10px 12px}.pipe-line{max-width:30px}.pipe-dot{width:36px;height:36px;font-size:16px}.pipe-lbl{font-size:9px}.evo{padding:16px}}
 
 /* PLATFORM SECTION */
 .po{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
@@ -249,13 +268,54 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <section class="ts" id="icle"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--ig)">Method 02</div><h2>ICLE Framework</h2><div class="su">Idea Concept Lens Evolution &mdash; Multidisciplinary idea expansion</div></div>
 <div class="td">ICLE helps students add depth to their ideas. It uses <strong>14 conceptual lenses</strong> across 5 stages to refract a single idea through multiple domains &mdash; from numbers and structure, through living systems and human behaviour, to meaning and cosmic-scale futures. Published white paper (DOI: 10.5281/zenodo.19024288). <strong>Works as a physical card deck.</strong></div>
-<img src="images/ICLE%20Universe.png" alt="ICLE Universe" class="img-full">
 <div class="tb" style="border-color:rgba(196,136,60,.1)">
 <div class="tl" style="background:rgba(196,136,60,.12);color:var(--ig)">Try It &mdash; Pick a lens and see what questions it generates</div>
 <div class="tsc" id="iSc" style="border-color:var(--i)"></div>
 <p style="font-size:13px;color:var(--td);margin-bottom:16px">Select any lens card:</p>
 <div class="lg" id="lGrid"></div>
 <div class="io" id="iOut"><h4 id="iOT"></h4><div id="iQs"></div><div class="it" id="iTr"></div></div>
+</div>
+<div class="iu-tree" id="icleUniverse">
+<div class="iu-tree-t">The ICLE Universe</div>
+<div class="iu-tree-s">14 lenses · 5 stages · Hover any lens to explore</div>
+<div class="iu-tree-c">
+<svg class="iu-tree-sv" viewBox="0 0 600 840">
+<path d="M300 700 Q300 500, 300 400 Q295 300, 250 230 Q240 210, 200 180" fill="none" stroke="#4a7c59" stroke-width="2.5" opacity="0.2" stroke-linecap="round"/>
+<path d="M300 700 Q300 500, 300 400 Q305 300, 350 230 Q360 210, 400 180" fill="none" stroke="#4a7c59" stroke-width="2.5" opacity="0.2" stroke-linecap="round"/>
+<path d="M300 700 Q300 500, 300 350" fill="none" stroke="#4a7c59" stroke-width="3" opacity="0.15" stroke-linecap="round"/>
+<path d="M250 230 Q220 200, 160 150" fill="none" stroke="#c48a5c" stroke-width="1.5" opacity="0.12" stroke-linecap="round"/>
+<path d="M250 230 Q230 190, 230 130" fill="none" stroke="#c48a5c" stroke-width="1.5" opacity="0.12" stroke-linecap="round"/>
+<path d="M350 230 Q380 200, 440 150" fill="none" stroke="#b580d4" stroke-width="1.5" opacity="0.12" stroke-linecap="round"/>
+<path d="M350 230 Q370 190, 370 130" fill="none" stroke="#b580d4" stroke-width="1.5" opacity="0.12" stroke-linecap="round"/>
+<path d="M300 350 Q280 280, 200 180 Q180 150, 210 80" fill="none" stroke="#d4a05c" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
+<path d="M300 350 Q320 280, 400 180 Q420 150, 390 80" fill="none" stroke="#d4a05c" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
+<path d="M300 350 Q300 240, 300 60" fill="none" stroke="#d4a05c" stroke-width="1" opacity="0.08" stroke-linecap="round"/>
+<text x="300" y="790" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#7a9ec4" fill-opacity="0.4" letter-spacing="3">STRUCTURAL · ICLE-1</text>
+<g class="tnd" data-l="Arithmeticle" data-d="Structural" data-c="#7a9ec4" data-q="What are the key numbers? What scale is needed?"><circle class="tnd-glow" cx="220" cy="730" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="220" cy="730" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="220" y="733" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Arith</text></g>
+<g class="tnd" data-l="Geometricle" data-d="Structural" data-c="#7a9ec4" data-q="What spatial pattern defines this? Centralised or distributed?"><circle class="tnd-glow" cx="300" cy="740" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="300" cy="740" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="300" y="743" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Geo</text></g>
+<g class="tnd" data-l="Algorithmicle" data-d="Structural" data-c="#7a9ec4" data-q="What rules govern this? What process logic drives it?"><circle class="tnd-glow" cx="380" cy="730" r="22" fill="#7a9ec4" opacity="0.05"/><circle class="tnd-o" cx="380" cy="730" r="16" fill="#0a0a0f" stroke="#7a9ec4" stroke-width="1.5" stroke-opacity="0.6"/><text x="380" y="733" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#7a9ec4" fill-opacity="0.85" font-weight="500">Algo</text></g>
+<text x="80" y="610" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6aad7a" fill-opacity="0.4" letter-spacing="2">LIVING</text><text x="470" y="610" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6aad7a" fill-opacity="0.4" letter-spacing="2">ICLE-2</text>
+<g class="tnd" data-l="Biologicle" data-d="Living" data-c="#6aad7a" data-q="How does this grow? What are the inputs and outputs?"><circle class="tnd-glow" cx="250" cy="600" r="22" fill="#6aad7a" opacity="0.05"/><circle class="tnd-o" cx="250" cy="600" r="16" fill="#0a0a0f" stroke="#6aad7a" stroke-width="1.5" stroke-opacity="0.6"/><text x="250" y="603" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#6aad7a" fill-opacity="0.85" font-weight="500">Bio</text></g>
+<g class="tnd" data-l="Ecologicle" data-d="Living" data-c="#6aad7a" data-q="What systems interact? What feedback loops?"><circle class="tnd-glow" cx="350" cy="600" r="22" fill="#6aad7a" opacity="0.05"/><circle class="tnd-o" cx="350" cy="600" r="16" fill="#0a0a0f" stroke="#6aad7a" stroke-width="1.5" stroke-opacity="0.6"/><text x="350" y="603" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#6aad7a" fill-opacity="0.85" font-weight="500">Eco</text></g>
+<text x="80" y="470" font-family="'JetBrains Mono',monospace" font-size="8" fill="#c48a5c" fill-opacity="0.4" letter-spacing="2">HUMAN</text><text x="470" y="470" font-family="'JetBrains Mono',monospace" font-size="8" fill="#c48a5c" fill-opacity="0.4" letter-spacing="2">ICLE-3</text>
+<g class="tnd" data-l="Psychologicle" data-d="Human" data-c="#c48a5c" data-q="How do people experience this? What biases affect it?"><circle class="tnd-glow" cx="240" cy="470" r="22" fill="#c48a5c" opacity="0.05"/><circle class="tnd-o" cx="240" cy="470" r="16" fill="#0a0a0f" stroke="#c48a5c" stroke-width="1.5" stroke-opacity="0.6"/><text x="240" y="473" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#c48a5c" fill-opacity="0.85" font-weight="500">Psych</text></g>
+<g class="tnd" data-l="Anthropologicle" data-d="Human" data-c="#c48a5c" data-q="How do cultures relate? What norms does it touch?"><circle class="tnd-glow" cx="360" cy="470" r="22" fill="#c48a5c" opacity="0.05"/><circle class="tnd-o" cx="360" cy="470" r="16" fill="#0a0a0f" stroke="#c48a5c" stroke-width="1.5" stroke-opacity="0.6"/><text x="360" y="473" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#c48a5c" fill-opacity="0.85" font-weight="500">Anthro</text></g>
+<text x="80" y="310" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b580d4" fill-opacity="0.4" letter-spacing="2">MEANING</text><text x="470" y="310" font-family="'JetBrains Mono',monospace" font-size="8" fill="#b580d4" fill-opacity="0.4" letter-spacing="2">ICLE-4</text>
+<g class="tnd" data-l="Symbolicle" data-d="Meaning" data-c="#b580d4" data-q="What does this represent? What identity does it signal?"><circle class="tnd-glow" cx="180" cy="330" r="22" fill="#b580d4" opacity="0.05"/><circle class="tnd-o" cx="180" cy="330" r="16" fill="#0a0a0f" stroke="#b580d4" stroke-width="1.5" stroke-opacity="0.6"/><text x="180" y="333" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#b580d4" fill-opacity="0.85" font-weight="500">Symbol</text></g>
+<g class="tnd" data-l="Metaphoricle" data-d="Meaning" data-c="#b580d4" data-q="What systems resemble this? What analogy reframes it?"><circle class="tnd-glow" cx="270" cy="310" r="22" fill="#b580d4" opacity="0.05"/><circle class="tnd-o" cx="270" cy="310" r="16" fill="#0a0a0f" stroke="#b580d4" stroke-width="1.5" stroke-opacity="0.6"/><text x="270" y="313" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#b580d4" fill-opacity="0.85" font-weight="500">Metaph</text></g>
+<g class="tnd" data-l="Mythologicle" data-d="Meaning" data-c="#b580d4" data-q="What story does this tell? What archetype?"><circle class="tnd-glow" cx="340" cy="320" r="22" fill="#b580d4" opacity="0.05"/><circle class="tnd-o" cx="340" cy="320" r="16" fill="#0a0a0f" stroke="#b580d4" stroke-width="1.5" stroke-opacity="0.6"/><text x="340" y="323" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#b580d4" fill-opacity="0.85" font-weight="500">Myth</text></g>
+<g class="tnd" data-l="Philosophicle" data-d="Meaning" data-c="#b580d4" data-q="Why should this exist? What values? What ethical tensions?"><circle class="tnd-glow" cx="420" cy="340" r="22" fill="#b580d4" opacity="0.05"/><circle class="tnd-o" cx="420" cy="340" r="16" fill="#0a0a0f" stroke="#b580d4" stroke-width="1.5" stroke-opacity="0.6"/><text x="420" y="343" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#b580d4" fill-opacity="0.85" font-weight="500">Philo</text></g>
+<text x="80" y="150" font-family="'JetBrains Mono',monospace" font-size="8" fill="#d4a05c" fill-opacity="0.4" letter-spacing="2">COSMIC</text><text x="470" y="150" font-family="'JetBrains Mono',monospace" font-size="8" fill="#d4a05c" fill-opacity="0.4" letter-spacing="2">ICLE-5</text>
+<g class="tnd" data-l="Metaphysicle" data-d="Cosmic" data-c="#d4a05c" data-q="What reality assumptions are embedded? What is taken for granted?"><circle class="tnd-glow" cx="210" cy="160" r="22" fill="#d4a05c" opacity="0.05"/><circle class="tnd-o" cx="210" cy="160" r="16" fill="#0a0a0f" stroke="#d4a05c" stroke-width="1.5" stroke-opacity="0.6"/><text x="210" y="163" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#d4a05c" fill-opacity="0.85" font-weight="500">M.phys</text></g>
+<g class="tnd" data-l="Cosmologicle" data-d="Cosmic" data-c="#d4a05c" data-q="Does this mirror universal patterns? What natural cycles?"><circle class="tnd-glow" cx="300" cy="140" r="22" fill="#d4a05c" opacity="0.05"/><circle class="tnd-o" cx="300" cy="140" r="16" fill="#0a0a0f" stroke="#d4a05c" stroke-width="1.5" stroke-opacity="0.6"/><text x="300" y="143" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#d4a05c" fill-opacity="0.85" font-weight="500">Cosmo</text></g>
+<g class="tnd" data-l="Cosmonicle" data-d="Cosmic" data-c="#d4a05c" data-q="How would this work in 50 years? At civilizational scale?"><circle class="tnd-glow" cx="390" cy="160" r="22" fill="#d4a05c" opacity="0.05"/><circle class="tnd-o" cx="390" cy="160" r="16" fill="#0a0a0f" stroke="#d4a05c" stroke-width="1.5" stroke-opacity="0.6"/><text x="390" y="163" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#d4a05c" fill-opacity="0.85" font-weight="500">Cosmic</text></g>
+<circle cx="300" cy="60" r="3" fill="#d4a05c" opacity="0.5"/><circle cx="300" cy="60" r="8" fill="#d4a05c" opacity="0.08"/><circle cx="300" cy="60" r="16" fill="#d4a05c" opacity="0.03"/>
+<text x="300" y="35" text-anchor="middle" font-family="'Instrument Serif',serif" font-size="12" fill="#d4a05c" fill-opacity="0.6" font-style="italic">Sky</text>
+<text x="300" y="820" text-anchor="middle" font-family="'Instrument Serif',serif" font-size="12" fill="#4a7c59" fill-opacity="0.6" font-style="italic">Soil</text>
+</svg>
+<div class="tnd-tip" id="tndTip"><div class="tnd-tip-n" id="tndTipN"></div><div class="tnd-tip-d" id="tndTipD"></div><div class="tnd-tip-q" id="tndTipQ"></div></div>
+</div>
+<div class="iu-tree-lg"><div class="iu-tree-li"><div class="iu-tree-ld" style="background:#7a9ec4"></div>Structural</div><div class="iu-tree-li"><div class="iu-tree-ld" style="background:#6aad7a"></div>Living</div><div class="iu-tree-li"><div class="iu-tree-ld" style="background:#c48a5c"></div>Human</div><div class="iu-tree-li"><div class="iu-tree-ld" style="background:#b580d4"></div>Meaning</div><div class="iu-tree-li"><div class="iu-tree-ld" style="background:#d4a05c"></div>Cosmic</div></div>
 </div>
 <div style="margin-top:32px"><p style="font-size:14px;color:var(--td)"><strong style="color:var(--t)">The ICLE Complexity Scale</strong> measures how far an idea has evolved: from Seed (ICLE-1) through Structural, Living, Meaningful, to Cosmicle (ICLE-5). This gives educators a way to assess idea maturity.</p></div>
 </div></section>
@@ -829,6 +889,30 @@ rPScens();rPStep();
 sw(0);
 var heroLogo=document.getElementById('heroLogo');
 window.addEventListener('scroll',function(){if(heroLogo){heroLogo.classList.toggle('faded',window.scrollY>100)}});
+(function(){
+var tip=document.getElementById("tndTip");
+if(!tip)return;
+document.querySelectorAll(".tnd").forEach(function(n){
+n.addEventListener("mouseenter",function(){
+var r=n.getBoundingClientRect();
+var w=document.querySelector(".iu-tree-c").getBoundingClientRect();
+document.getElementById("tndTipN").textContent=n.dataset.l;
+document.getElementById("tndTipD").textContent=n.dataset.d+" domain";
+document.getElementById("tndTipD").style.color=n.dataset.c;
+document.getElementById("tndTipQ").textContent=n.dataset.q;
+tip.style.borderColor=n.dataset.c+"30";
+var left=r.left-w.left+r.width/2+20;
+var top=r.top-w.top-30;
+if(left+220>w.width)left=r.left-w.left-230;
+if(top<0)top=8;
+if(top+120>w.height)top=w.height-130;
+tip.style.left=left+"px";
+tip.style.top=top+"px";
+tip.classList.add("on");
+});
+n.addEventListener("mouseleave",function(){tip.classList.remove("on")});
+});
+})();
 </script>
 </body>
 </html>
