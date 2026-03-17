@@ -57,8 +57,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 .iu-tree-lg{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:10px}
 .iu-tree-li{display:flex;align-items:center;gap:5px;color:#8a8880}
 .iu-tree-ld{width:7px;height:7px;border-radius:50%}
-.graf-img{position:relative;overflow:hidden;border-radius:16px}
-.graf-img::after{content:'';position:absolute;top:-100%;left:0;right:0;height:100%;background:linear-gradient(180deg,transparent 40%,rgba(155,126,216,0.06) 60%,transparent 80%);animation:grafDrip 8s ease-in-out infinite;pointer-events:none}
+.graf-vid{max-width:500px;margin:24px auto;border-radius:16px;overflow:hidden;position:relative}
+.graf-vid video{width:100%;display:block;border-radius:16px}
+.graf-vid::after{content:'';position:absolute;top:-100%;left:0;right:0;height:100%;background:linear-gradient(180deg,transparent 40%,rgba(155,126,216,0.06) 60%,transparent 80%);animation:grafDrip 8s ease-in-out infinite;pointer-events:none;z-index:1;border-radius:16px}
 @keyframes grafDrip{0%,100%{top:-100%}50%{top:100%}}
 .fb-btn{position:fixed;bottom:24px;right:24px;padding:10px 20px;background:rgba(155,126,216,0.12);border:1px solid rgba(155,126,216,0.3);border-radius:24px;color:#9b7ed8;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;z-index:1000;transition:all 0.25s;backdrop-filter:blur(8px)}
 .fb-btn:hover{background:rgba(155,126,216,0.22);transform:translateY(-2px)}
@@ -348,7 +349,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);line-h
 <section class="ts" id="graffitive"><div class="ctn">
 <div class="th"><div class="tn" style="color:var(--gg)">Method 03</div><div class="th-row"><img src="images/Transparent.png" alt="Graffitive Mascot" class="th-mascot"><h2>Graffitive</h2></div><div class="su">Structured intellectual trespass &mdash; Write over what you know</div></div>
 <div class="td">Graffitive helps students stress-test ideas through <strong>productive conflict</strong>. Students write directly over each other&rsquo;s ideas using five Spray Cans. The result is a layered palimpsest &mdash; a visible record of how ideas evolve through challenge. <strong>Graffitive turns critique into a creative act.</strong></div>
-<div class="graf-img" style="max-width:500px;margin:24px auto"><img src="images/graf2.jpg" alt="Graffitive" style="width:100%;display:block;border-radius:16px"></div>
+<div class="graf-vid">
+<video autoplay loop muted playsinline>
+<source src="images/graffitive_hero.mp4" type="video/mp4">
+</video>
+</div>
 <div class="tb" style="border-color:rgba(181,70,94,.1)">
 <div class="tl" style="background:rgba(181,70,94,.12);color:var(--gg)">Try It &mdash; Layer the five Spray Cans onto an idea</div>
 <div class="tsc" id="gSc" style="border-color:var(--g)"></div>
